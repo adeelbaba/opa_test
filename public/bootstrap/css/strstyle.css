@@ -1,0 +1,52 @@
+.btn-send {
+  background-image: none;
+  text-shadow: none;
+}
+
+.nav>li>a {
+  padding: 15px 7px !important;
+}
+
+.error-login p {
+  margin: 10px 0px;
+}
+
+.custom-input-padding {
+  padding: 0px 10px 0px 10px;
+}
+
+.navbar-nav li:hover{
+background: none;
+}
+
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.open>a {
+  background-image: url(../img/dot.png) !important;
+  background-repeat: no-repeat !important;
+  background-position: center 35px !important;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .open > a {
+    box-shadow: none;
+}
+
+.container-fluid{
+ padding-right: 0px !important;
+}
+
+.row{
+ margin-right: 0px !important;
+}
+
+.sub-header {
+  padding: 15px !important;
+}
+
+.form-margin {
+  margin-top: 10px !important;
+  padding: 15px !important;
+}
+
+.results {
+  padding-bottom: 15px !important;
+}
