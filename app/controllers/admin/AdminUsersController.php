@@ -293,28 +293,28 @@ class AdminUsersController extends AdminController
     {
         $users = User::leftjoin('assigned_roles', 'assigned_roles.user_id', '=', 'users.id')
             ->leftjoin('roles', 'roles.id', '=', 'assigned_roles.role_id')
-            ->select(array('users.id', 'users.username', 'users.first_name', 'users.last_name', 'users.organization', 'users.department', 'users.role', 'users.email', 'roles.name as rolename', 'users.confirmed', 'users.created_at'));
+            ->select(array('users.id', 'users.username', 'users.first_name', 'users.last_name', 'users.organization', 'users.department', 'users.role', 'users.email', 'roles.name as rolename', 'users.confirmed', 'users.created_at', 'users.isRejected'));
 
         return Datatables::of($users)
             // ->edit_column('created_at','{{{ Carbon::now()->diffForHumans(Carbon::createFromFormat(\'Y-m-d H\', $test)) }}}')
 
-            ->edit_column('confirmed', '@if ($confirmed==1)'
-                . 'Activated
-                @elseif ($confirmed==2)
-                Rejected
+            ->edit_column('confirmed','@if ($isRejected==1)
+                    Rejected
+                @elseif ($confirmed==1)
+                    Activated
                 @elseif ($confirmed==0)
-                Did not Finalize
-                        @endif'
+                    New
+                @endif'
             )
             ->add_column('actions', '<a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="iframe btn btn-xs btn-default">{{{ Lang::get(\'button.edit\') }}}</a>
                                 @if($username == \'admin\')
                                 @else
                                     <a href="{{{ URL::to(\'admin/users/\' . $id . \'/delete\' ) }}}" class="iframe btn btn-xs btn-danger">{{{ Lang::get(\'button.delete\') }}}</a>
                                 @endif
-                                @if($confirmed==0)
+                                @if($confirmed==0 && $isRejected==0)
                                 <a href="{{{ URL::to(\'admin/users/\' . $id . \'/activate\' ) }}}"class="iframe btn btn-xs btn-info">{{{ Lang::get(\'Activate\') }}}</a>
                                 <a href="{{{ URL::to(\'admin/users/\' . $id . \'/reject\' ) }}}"class="iframe btn btn-xs btn-info">{{{ Lang::get(\'Reject\') }}}</a>
-                                @elseif($confirmed==2)
+                                @elseif($isRejected==1)
                                 <a href="{{{ URL::to(\'admin/users/\' . $id . \'/activate\' ) }}}"class="iframe btn btn-xs btn-info">{{{ Lang::get(\'Activate\') }}}</a>
                                  @endif
             ')
@@ -368,7 +368,7 @@ class AdminUsersController extends AdminController
     {
         $updated = DB::table('users')
             ->where('id', $user->id)
-            ->update(array('confirmed' => '1'));
+            ->update(array('confirmed' => '1', 'isRejected' => '0'));
 
 
         if ($updated) {
