@@ -324,12 +324,16 @@ class AdminUsersController extends AdminController
 
     public function rejectionEmail($user)
     {
+        Log::info(">>> User Rejection Email " . $user);
         $updated = DB::table('users')
             ->where('id', $user->id)
             //->update(array('isRejected' => '1', 'confirmed' => '0'));
             ->update(array('isRejected' => '1'));
 
+        Log::info(">>> User Rejection Email DB Updated" . $updated);
+
         if ($updated) {
+            Log::info(">>> User Rejection Email - inside if check ");
             Mail::send('emails/auth/account_rejection_email', array('name' => $user->username),
                 function ($message) use ($user) {
                     $message
@@ -337,6 +341,8 @@ class AdminUsersController extends AdminController
                         ->subject('Open-Payments');
 
                 });
+
+            Log::info(">>> User Reject Email should have been sent");
             /**
              * Mail::queueOn(
              * Config::get('confide::email_queue'),
