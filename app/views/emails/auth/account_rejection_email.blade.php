@@ -22,10 +22,6 @@ Website: http://www.streebo.com <br>
 </p>
 <br>
 
-<a href="//www.facebook.com/Streebo.Inc"><img src="{{ HTML::image(../img/facebok.png)}}" width=30" height="30"></a>
-<a href="//www.twitter.com/streeboinc"><img src="{{{ HTML::image('assets/img/twitter.png') }}}" width="30" height="30"></a>
-<a href="//www.linkedin.com/company/streebo-inc"><img src="{{{ HTML::image(../img/linkedin.png)}}}" width="30" height="30"></a>
-<a href="//www.twitter.com/streeboinc"><img src="{{ HTML::image('assets/img/twitter.png') }}" width="30" height="30"></a>
 <br>
 <br>
 <small>
