@@ -295,6 +295,10 @@ class AdminUsersController extends AdminController
             ->leftjoin('roles', 'roles.id', '=', 'assigned_roles.role_id')
             ->select(array('users.id', 'users.username', 'users.first_name', 'users.last_name', 'users.organization', 'users.department', 'users.role', 'users.email', 'roles.name as rolename', 'users.confirmed', 'users.created_at', 'users.isRejected'));
 
+        //                          @if($isRejected == 1)
+//                                   <a href="{{{ URL::to(\'admin/users/\' . $id . \'/activate\' ) }}}" class="iframe btn btn-xs btn-info">{{{ Lang::get(\'Activate\') }}}</a>
+//                                @elseif($confirmed == 0)
+
         return Datatables::of($users)
             // ->edit_column('created_at','{{{ Carbon::now()->diffForHumans(Carbon::createFromFormat(\'Y-m-d H\', $test)) }}}')
             ->edit_column('confirmed', '@if ($isRejected==1)
@@ -310,9 +314,7 @@ class AdminUsersController extends AdminController
                                 @else
                                     <a href="{{{ URL::to(\'admin/users/\' . $id . \'/delete\' ) }}}" class="iframe btn btn-xs btn-danger">{{{ Lang::get(\'button.delete\') }}}</a>
                                 @endif
-                                @if($isRejected == 1)
-                                   <a href="{{{ URL::to(\'admin/users/\' . $id . \'/activate\' ) }}}" class="iframe btn btn-xs btn-info">{{{ Lang::get(\'Activate\') }}}</a>
-                                @elseif($confirmed == 0)
+                                @if($confirmed == 0)
                                     <a href="{{{ URL::to(\'admin/users/\' . $id . \'/activate\' ) }}}" class="iframe btn btn-xs btn-info">{{{ Lang::get(\'Activate\') }}}</a>
                                     <a href="{{{ URL::to(\'admin/users/\' . $id . \'/reject\' ) }}}" class="iframe btn btn-xs btn-info">{{{ Lang::get(\'Reject\') }}}</a>
                                @endif
