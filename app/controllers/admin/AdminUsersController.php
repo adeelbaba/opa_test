@@ -327,8 +327,8 @@ class AdminUsersController extends AdminController
         Log::info(">>> User Rejection Email " . $user);
         $updated = DB::table('users')
             ->where('id', $user->id)
-            //->update(array('isRejected' => '1', 'confirmed' => '0'));
-            ->update(array('isRejected' => '1'));
+            ->update(array('isRejected' => '1', 'confirmed' => '0'));
+            //->update(array('isRejected' => '1'));
 
         Log::info(">>> User Rejection Email DB Updated" . $updated);
 
