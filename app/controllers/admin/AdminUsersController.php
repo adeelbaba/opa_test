@@ -326,7 +326,8 @@ class AdminUsersController extends AdminController
     {
         $updated = DB::table('users')
             ->where('id', $user->id)
-            ->update(array('isRejected' => '1', 'confirmed' => '0'));
+            //->update(array('isRejected' => '1', 'confirmed' => '0'));
+            ->update(array('isRejected' => '1'));
 
         if ($updated) {
             Mail::send('emails/auth/account_rejection_email', array('name' => $user->username),
