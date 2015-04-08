@@ -6,17 +6,17 @@
 		<meta charset="utf-8" />
 		<title>
 			@section('title')
-			OpenPayments Analytics
+			Open Payments Analytics: Insights into CMS Open Payments Data
 			@show
 		</title>
 		@section('meta_keywords')
-		<meta name="keywords" content="OpenPayments, Open Payments Analytics, OpenPaymentsAnalytics" />
+		<meta name="keywords" content="Open Payments Analytics, OPA, CMS, Sunshine Act, Open Payments Insights, Streebo Inc." />
 		@show
 		@section('meta_author')
 		<meta name="author" content="Streebo" />
 		@show
 		@section('meta_description')
-		<meta name="description" content="Sunshine Act, OpenPayments Data Analysis, OpenPayments" />
+		<meta name="description" content="Gain insights into open payments data made public by CMS" />
                 @show
 		<!-- Mobile Specific Metas
 		================================================== -->

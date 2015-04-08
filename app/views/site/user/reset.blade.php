@@ -2,9 +2,17 @@
 
 {{-- Web site Title --}}
 @section('title')
-{{{ Lang::get('user/user.forgot_password') }}} ::
-@parent
-@stop
+		OpenPaymentsAnalytics - Reset Password
+		@stop
+		@section('meta_keywords')
+		<meta name="keywords" content="Reset Password Change Password, Open Payments Analytics, Streebo Inc." />
+		@show
+		@section('meta_author')
+		<meta name="author" content="Streebo" />
+		@show
+		@section('meta_description')
+		<meta name="description" content="Reset Password - Open Payments Analytics" />
+        @show
 
 {{-- Content --}}
 @section('content')

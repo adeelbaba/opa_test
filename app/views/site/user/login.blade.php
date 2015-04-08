@@ -1,10 +1,18 @@
 @extends('site.layouts.default')
 
 {{-- Web site Title --}}
-@section('title')
-{{{ Lang::get('user/user.login') }}} ::
-@parent
-@stop
+		@section('title')
+		OpenPaymentsAnalytics - Login
+		@stop
+		@section('meta_keywords')
+		<meta name="keywords" content="Sign in at Open Payments Analytics, Register at Open Payments Analytics, Open Payments Analytics, OPA, CMS,  Streebo Inc." />
+		@show
+		@section('meta_author')
+		<meta name="author" content="Streebo" />
+		@show
+		@section('meta_description')
+		<meta name="description" content="Login to your account at open payments analytics" />
+        @show
 
 {{-- Content --}}
 @section('content')

@@ -1,10 +1,24 @@
 @extends('site.layouts.default')
 
 {{-- Web site Title --}}
-@section('title')
-{{{ Lang::get('user/user.forgot_password') }}} ::
-@parent
-@stop
+		@section('title')
+		OpenPaymentsAnalytics - Forgot Password
+		@stop
+		@section('meta_keywords')
+		<meta name="keywords" content="Forgot Password at Open Payments Analytics, Open Payments Analytics, OPA, CMS,  Streebo Inc." />
+		@show
+		@section('meta_author')
+		<meta name="author" content="Streebo" />
+		@show
+		@section('meta_description')
+		<meta name="description" content="Recover your open payments analytics account password" />
+        @show
+
+
+
+Title - 
+Keyword: 
+Description: 
 
 {{-- Content --}}
 @section('content')

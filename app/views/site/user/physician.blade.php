@@ -1,10 +1,18 @@
 @extends('site.layouts.analytics')
 
 {{-- Web site Title --}}
-@section('title')
-    Physician :: OpenPayments Analytics
-    @parent
-@stop
+		@section('title')
+		OpenPaymentsAnalytics - Physician Analytics
+		@stop
+		@section('meta_keywords')
+		<meta name="keywords" content="Physician Dashboard, HCP Dashboard, Physician Analytics, Physician Spending Insights, HCP Open Payments Spending, Open Payments Analytics, Streebo Inc." />
+		@show
+		@section('meta_author')
+		<meta name="author" content="Streebo" />
+		@show
+		@section('meta_description')
+		<meta name="description" content="Search for a physician, hcp and gain insights into the hcp spending pattern from open payments data" />
+        @show
 
 {{-- New Laravel 4 Feature in use --}}
 @section('styles')

@@ -44,15 +44,39 @@
 				</div>
 			<div class="row">
 						<!-- Blade Template engine -->
-							<script charset="utf-8" src="//js.hsforms.net/forms/current.js"></script>
-							<script>
-							  hbspt.forms.create({ 
-								portalId: '304374',
-								formId: '15c12fcb-8ebe-475c-bb49-c00715432693',
-								css:'.hs-input{width: 500px;} .input{padding-bottom: 10px;}',
-								submitButtonClass: 'btn btn-default btn-send'
-							  });
-							</script>
+						 {{ Form:: open(array('url' => 'contact_request')) }} <!--contact_request is a router from Route class-->
+						 
+									@if (Session::get('errors'))
+									<div class="error-login text-center">
+										@foreach($errors->all('<p>:message</p>') as $message)
+										{{ $message }}
+										@endforeach
+									</div>
+									@endif
+									@if(Session::has('message'))
+									<ul class="alert alert-success">
+													 {{ Session::get('message') }}
+									</ul>
+									@endif
+						 
+									{{ Form:: label ('name', 'NAME*' )}}
+									{{ Form:: text ('name', Input::old('name'), array('placeholder' => 'Full Name', 'class' => 'form-control'))}}
+						 <br>
+									{{ Form:: label ('phone_number', 'PHONE NUMBER' )}}
+									{{ Form:: text ('phone_number', Input::old('phone_number'), array('placeholder' => 'Phone Number (Only Numbers)', 'class' => 'form-control')) }}
+						 <br>
+									{{ Form:: label ('email', 'EMAIL*') }}
+									{{ Form:: email ('email', Input::old('email'), array('placeholder' => 'Business Email*', 'class' => 'form-control')) }}
+						 <br>
+									{{ Form:: label ('message', 'MESSAGE*' )}}
+									{{ Form:: textarea ('message', Input::old('message'), array('class' => 'form-control'))}}
+						 <br>
+									
+									<div class="form-actions form-group">
+									  <button type="submit" class="btn btn-default btn-send"><span class="glyphicon glyphicon-send"></span>  SUBMIT</button>
+									</div>
+						 
+									{{ Form:: close() }}
 						 <br>
 				</div>
 			</div>

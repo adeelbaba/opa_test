@@ -1,10 +1,18 @@
 @extends('site.layouts.analytics')
 
 {{-- Web site Title --}}
-@section('title')
-    Company :: OpenPayments Analytics
-    @parent
-@stop
+		@section('title')
+		OpenPaymentsAnalytics - Company Analytics
+		@stop
+		@section('meta_keywords')
+		<meta name="keywords" content="Company Dashboard, Company Analytics, Company Spending Insights, Open Payments Analytics, OPA, CMS,  Streebo Inc." />
+		@show
+		@section('meta_author')
+		<meta name="author" content="Streebo" />
+		@show
+		@section('meta_description')
+		<meta name="description" content="Gain valuable insights into your company's open payments data" />
+        @show
 
 {{-- New Laravel 4 Feature in use --}}
 @section('styles')

@@ -44,15 +44,10 @@
 				</div>
 			<div class="row">
 						<!-- Blade Template engine -->
-							<script charset="utf-8" src="//js.hsforms.net/forms/current.js"></script>
-							<script>
-							  hbspt.forms.create({ 
-								portalId: '304374',
-								formId: '15c12fcb-8ebe-475c-bb49-c00715432693',
-								css:'.hs-input{width: 500px;} .input{padding-bottom: 10px;}',
-								submitButtonClass: 'btn btn-default btn-send'
-							  });
-							</script>
+									<ul class="alert alert-success text-center">
+													 Thank you for showing interest in Open Payments Analytics. <br>
+													 We will be in touch shortly.<br>
+									</ul>
 						 <br>
 				</div>
 			</div>

@@ -15,10 +15,10 @@ class ContactController extends BaseController {
  
             //Validation rules
             $rules = array (
-                'name' => 'required|alpha_spaces',
+                'name' => 'required|alpha_spaces|max:50',
                 'phone_number'=>'numeric|min:8',
-                'email' => 'required|email',
-                'message' => 'required|min:25'
+                'email' => 'required|email|max:50',
+                'message' => 'required|min:25|max:1000'
             );
  
             //Validate data

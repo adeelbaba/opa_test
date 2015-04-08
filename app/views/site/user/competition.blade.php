@@ -1,10 +1,18 @@
 @extends('site.layouts.analytics')
 
 {{-- Web site Title --}}
-@section('title')
-    Competition :: OpenPayments Analytics
-    @parent
-@stop
+		@section('title')
+		OpenPaymentsAnalytics - Competition Analytics
+		@stop
+		@section('meta_keywords')
+		<meta name="keywords" content="Competitor Dashboard, Competitor Analytics, Competition Spending Insights, Competitor Open Payments Spending, Open Payments Analytics, Streebo Inc." />
+		@show
+		@section('meta_author')
+		<meta name="author" content="Streebo" />
+		@show
+		@section('meta_description')
+		<meta name="description" content="Search for a company and a competitor -  gain insights by comparing spending data from open payments" />
+        @show
 
 {{-- New Laravel 4 Feature in use --}}
 @section('styles')

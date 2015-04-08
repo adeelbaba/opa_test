@@ -1,10 +1,18 @@
 @extends('site.layouts.analytics')
 
 {{-- Web site Title --}}
-@section('title')
-   Specialty :: OpenPayments Analytics
-    @parent
-@stop
+		@section('title')
+		OpenPaymentsAnalytics - Specialty Analytics
+		@stop
+		@section('meta_keywords')
+		<meta name="keywords" content="Specialty Dashboard, Specialty Analytics, Specialty Spending Insights, Specialty Open Payments Spending, Open Payments Analytics, Streebo Inc." />
+		@show
+		@section('meta_author')
+		<meta name="author" content="Streebo" />
+		@show
+		@section('meta_description')
+		<meta name="description" content="Search for a specialty and gain insights into open payments spending on a specialty" />
+        @show
 
 {{-- New Laravel 4 Feature in use --}}
 @section('styles')

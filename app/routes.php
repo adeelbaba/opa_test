@@ -145,6 +145,13 @@ Route::get('contact', function()
     return View::make('contact');
 });
 
+# Contact Us Static Page
+Route::get('thankyou', function()
+{
+    // Return Thank You Page
+    return View::make('thankyou');
+});
+
 # Posts - Second to last set, match slug
 Route::get('{postSlug}', 'BlogController@getView');
 Route::post('{postSlug}', 'BlogController@postView');

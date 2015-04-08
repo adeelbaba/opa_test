@@ -2,10 +2,18 @@
 
 {{-- Web site Title --}}
 @section('title')
-{{{ Lang::get('user/user.settings') }}} ::
-@parent
-@stop
-
+		OpenPaymentsAnalytics - Update User Account
+		@stop
+		@section('meta_keywords')
+		<meta name="keywords" content="Update User Account, Change Password, Open Payments Analytics, Streebo Inc." />
+		@show
+		@section('meta_author')
+		<meta name="author" content="Streebo" />
+		@show
+		@section('meta_description')
+		<meta name="description" content="Update user account - open payments analytics" />
+        @show
+		
 {{-- New Laravel 4 Feature in use --}}
 @section('styles')
 @parent
