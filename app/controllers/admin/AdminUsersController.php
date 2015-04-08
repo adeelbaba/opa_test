@@ -1,6 +1,7 @@
 <?php
 
-class AdminUsersController extends AdminController {
+class AdminUsersController extends AdminController
+{
 
 
     /**
@@ -71,14 +72,14 @@ class AdminUsersController extends AdminController {
         // Selected permissions
         $selectedPermissions = Input::old('permissions', array());
 
-		// Title
-		$title = Lang::get('admin/users/title.create_a_new_user');
+        // Title
+        $title = Lang::get('admin/users/title.create_a_new_user');
 
-		// Mode
-		$mode = 'create';
+        // Mode
+        $mode = 'create';
 
-		// Show the page
-		return View::make('admin/users/create_edit', compact('roles', 'permissions', 'selectedRoles', 'selectedPermissions', 'title', 'mode'));
+        // Show the page
+        return View::make('admin/users/create_edit', compact('roles', 'permissions', 'selectedRoles', 'selectedPermissions', 'title', 'mode'));
     }
 
     /**
@@ -88,15 +89,15 @@ class AdminUsersController extends AdminController {
      */
     public function postCreate()
     {
-        
-        $this->user->username = Input::get( 'username' );
-        $this->user->email = Input::get( 'email' );
-        $this->user->password = Input::get( 'password' );
+
+        $this->user->username = Input::get('username');
+        $this->user->email = Input::get('email');
+        $this->user->password = Input::get('password');
 
         // The password confirmation will be removed from model
         // before saving. This field will be used in Ardent's
         // auto validation.
-        $this->user->password_confirmation = Input::get( 'password_confirmation' );
+        $this->user->password_confirmation = Input::get('password_confirmation');
 
         // Generate a random confirmation code
         $this->user->confirmation_code = md5(uniqid(mt_rand(), true));
@@ -111,9 +112,9 @@ class AdminUsersController extends AdminController {
         // Save if valid. Password field will be hashed before save
         $this->user->save();
 
-        if ( $this->user->id ) {
+        if ($this->user->id) {
             // Save roles. Handles updating.
-            $this->user->saveRoles(Input::get( 'roles' ));
+            $this->user->saveRoles(Input::get('roles'));
 
             if (Config::get('confide::signup_email')) {
                 $user = $this->user;
@@ -140,7 +141,7 @@ class AdminUsersController extends AdminController {
 
             return Redirect::to('admin/users/create')
                 ->withInput(Input::except('password'))
-                ->with( 'error', $error );
+                ->with('error', $error);
         }
     }
 
@@ -163,20 +164,17 @@ class AdminUsersController extends AdminController {
      */
     public function getEdit($user)
     {
-        if ( $user->id )
-        {
+        if ($user->id) {
             $roles = $this->role->all();
             $permissions = $this->permission->all();
 
             // Title
-        	$title = Lang::get('admin/users/title.user_update');
-        	// mode
-        	$mode = 'edit';
+            $title = Lang::get('admin/users/title.user_update');
+            // mode
+            $mode = 'edit';
 
-        	return View::make('admin/users/create_edit', compact('user', 'roles', 'permissions', 'title', 'mode'));
-        }
-        else
-        {
+            return View::make('admin/users/create_edit', compact('user', 'roles', 'permissions', 'title', 'mode'));
+        } else {
             return Redirect::to('admin/users')->with('error', Lang::get('admin/users/messages.does_not_exist'));
         }
     }
@@ -190,21 +188,21 @@ class AdminUsersController extends AdminController {
     public function postEdit($user)
     {
         $oldUser = clone $user;
-         $user->first_name = Input::get( 'firstname' );
-              $user->last_name = Input::get( 'lastname' );
-              $user->organization = Input::get( 'organization' );
-              $user->role = Input::get(value('selectrole') );
-              $user->department = Input::get(value('selectdepartment') );
-        $user->username = Input::get( 'username' );
-        $user->email = Input::get( 'email' );
-        $user->confirmed = Input::get( 'confirm' );
-        
+        $user->first_name = Input::get('firstname');
+        $user->last_name = Input::get('lastname');
+        $user->organization = Input::get('organization');
+        $user->role = Input::get(value('selectrole'));
+        $user->department = Input::get(value('selectdepartment'));
+        $user->username = Input::get('username');
+        $user->email = Input::get('email');
+        $user->confirmed = Input::get('confirm');
 
-        $password = Input::get( 'password' );
-        $passwordConfirmation = Input::get( 'password_confirmation' );
 
-        if(!empty($password)) {
-            if($password === $passwordConfirmation) {
+        $password = Input::get('password');
+        $passwordConfirmation = Input::get('password_confirmation');
+
+        if (!empty($password)) {
+            if ($password === $passwordConfirmation) {
                 $user->password = $password;
                 // The password confirmation will be removed from model
                 // before saving. This field will be used in Ardent's
@@ -215,16 +213,16 @@ class AdminUsersController extends AdminController {
                 return Redirect::to('admin/users/' . $user->id . '/edit')->with('error', Lang::get('admin/users/messages.password_does_not_match'));
             }
         }
-            
-        if($user->confirmed == null) { 
-            
+
+        if ($user->confirmed == null) {
+
             //Fahad Editing
             $user->confirmed = $oldUser->confirmed;
         }
 
         if ($user->save()) {
             // Save roles. Handles updating.
-            $user->saveRoles(Input::get( 'roles' ));
+            $user->saveRoles(Input::get('roles'));
         } else {
             return Redirect::to('admin/users/' . $user->id . '/edit')
                 ->with('error', Lang::get('admin/users/messages.edit.error'));
@@ -233,7 +231,7 @@ class AdminUsersController extends AdminController {
         // Get validation errors (see Ardent package)
         $error = $user->errors()->all();
 
-        if(empty($error)) {
+        if (empty($error)) {
             // Redirect to the new user page
             return Redirect::to('admin/users/' . $user->id . '/edit')->with('success', Lang::get('admin/users/messages.edit.success'));
         } else {
@@ -265,8 +263,7 @@ class AdminUsersController extends AdminController {
     public function postDelete($user)
     {
         // Check if we are not trying to delete ourselves
-        if ($user->id === Confide::user()->id)
-        {
+        if ($user->id === Confide::user()->id) {
             // Redirect to the user management page
             return Redirect::to('admin/users')->with('error', Lang::get('admin/users/messages.delete.impossible'));
         }
@@ -278,13 +275,10 @@ class AdminUsersController extends AdminController {
 
         // Was the comment post deleted?
         $user = User::find($id);
-        if ( empty($user) )
-        {
+        if (empty($user)) {
             // TODO needs to delete all of that user's content
             return Redirect::to('admin/users')->with('success', Lang::get('admin/users/messages.delete.success'));
-        }
-        else
-        {
+        } else {
             // There was a problem deleting the user
             return Redirect::to('admin/users')->with('error', Lang::get('admin/users/messages.delete.error'));
         }
@@ -298,22 +292,21 @@ class AdminUsersController extends AdminController {
     public function getData()
     {
         $users = User::leftjoin('assigned_roles', 'assigned_roles.user_id', '=', 'users.id')
-                    ->leftjoin('roles', 'roles.id', '=', 'assigned_roles.role_id')
-                    ->select(array('users.id','users.username','users.first_name','users.last_name','users.organization','users.department','users.role','users.email', 'roles.name as rolename', 'users.confirmed', 'users.created_at'));
+            ->leftjoin('roles', 'roles.id', '=', 'assigned_roles.role_id')
+            ->select(array('users.id', 'users.username', 'users.first_name', 'users.last_name', 'users.organization', 'users.department', 'users.role', 'users.email', 'roles.name as rolename', 'users.confirmed', 'users.created_at'));
 
         return Datatables::of($users)
-        // ->edit_column('created_at','{{{ Carbon::now()->diffForHumans(Carbon::createFromFormat(\'Y-m-d H\', $test)) }}}')
+            // ->edit_column('created_at','{{{ Carbon::now()->diffForHumans(Carbon::createFromFormat(\'Y-m-d H\', $test)) }}}')
 
-        ->edit_column('confirmed','@if ($confirmed==1)'
+            ->edit_column('confirmed', '@if ($confirmed==1)'
                 . 'Activated
                 @elseif ($confirmed==2)
                 Rejected
                 @elseif ($confirmed==0)
                 Did not Finalize
                         @endif'
-                )
-
-        ->add_column('actions', '<a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="iframe btn btn-xs btn-default">{{{ Lang::get(\'button.edit\') }}}</a>
+            )
+            ->add_column('actions', '<a href="{{{ URL::to(\'admin/users/\' . $id . \'/edit\' ) }}}" class="iframe btn btn-xs btn-default">{{{ Lang::get(\'button.edit\') }}}</a>
                                 @if($username == \'admin\')
                                 @else
                                     <a href="{{{ URL::to(\'admin/users/\' . $id . \'/delete\' ) }}}" class="iframe btn btn-xs btn-danger">{{{ Lang::get(\'button.delete\') }}}</a>
@@ -325,82 +318,79 @@ class AdminUsersController extends AdminController {
                                 <a href="{{{ URL::to(\'admin/users/\' . $id . \'/activate\' ) }}}"class="iframe btn btn-xs btn-info">{{{ Lang::get(\'Activate\') }}}</a>
                                  @endif
             ')
-
-        ->remove_column('id')
-
-        ->make();
+            ->remove_column('id')
+            ->make();
     }
+
     public function rejectionEmail($user)
     {
-         $updated=DB::table('users')
+        $updated = DB::table('users')
             ->where('id', $user->id)
-            ->update(array('confirmed' => '0'));
-         
-         if($updated)
-        {
-              Mail::send('emails/auth/account_rejection_email',array('name' => $user->username),
-    function ($message) use ($user) {
-                        $message
-                            ->to($user->email, $user->username)
-                            ->subject('Open-Payments');
-            
-        });
-        /**
-         * Mail::queueOn(
-                    Config::get('confide::email_queue'),
-                    Config::get('confide::email_account_confirmation'),
-                    compact('user'),
-                    function ($message) use ($user) {
-                        $message
-                            ->to($user->email, $user->username)
-                            ->subject(Lang::get('confide::confide.alerts.account_created.subject'));
-                    }
-                );
-            
+            ->update(array('isRejected' => '1', 'confirmed' => '0'));
+
+        if ($updated) {
+            Mail::send('emails/auth/account_rejection_email', array('name' => $user->username),
+                function ($message) use ($user) {
+                    $message
+                        ->to($user->email, $user->username)
+                        ->subject('Open-Payments');
+
+                });
+            /**
+             * Mail::queueOn(
+             * Config::get('confide::email_queue'),
+             * Config::get('confide::email_account_confirmation'),
+             * compact('user'),
+             * function ($message) use ($user) {
+             * $message
+             * ->to($user->email, $user->username)
+             * ->subject(Lang::get('confide::confide.alerts.account_created.subject'));
+             * }
+             * );
+             *
+             * }
+             */
+
+            $title = 'Account Request Update';
+            return View::make('admin/users/confirmation_email', compact('users', 'title'));
         }
-         */
-        
-       $title = 'Account Request Update';
-       return View::make('admin/users/confirmation_email',  compact('users','title'));
-        }
-        
+
     }
+
     public function activateUser($user)
     {
-        $updated=DB::table('users')
+        $updated = DB::table('users')
             ->where('id', $user->id)
             ->update(array('confirmed' => '1'));
-        
-         
-     
-        if($updated)
-        {
-            Mail::send('emails/auth/account_activated_email',array('name' => $user->username),
-    function ($message) use ($user) {
-                        $message
-                            ->to($user->email, $user->username)
-                            ->subject('Open-Payments Account Activated');
-            
-        });
-        /**
-         * Mail::queueOn(
-                    Config::get('confide::email_queue'),
-                    Config::get('confide::email_account_confirmation'),
-                    compact('user'),
-                    function ($message) use ($user) {
-                        $message
-                            ->to($user->email, $user->username)
-                            ->subject(Lang::get('confide::confide.alerts.account_created.subject'));
-                    }
-                );
-            
-        }
-         */
-        
-       $title = 'Account Activated!';
-       return View::make('admin/users/confirmation_email',  compact('users','title'));
-    
+
+
+        if ($updated) {
+            Mail::send('emails/auth/account_activated_email', array('name' => $user->username),
+                function ($message) use ($user) {
+                    $message
+                        ->to($user->email, $user->username)
+                        ->subject('Open-Payments Account Activated');
+
+                });
+            /**
+             * Mail::queueOn(
+             * Config::get('confide::email_queue'),
+             * Config::get('confide::email_account_confirmation'),
+             * compact('user'),
+             * function ($message) use ($user) {
+             * $message
+             * ->to($user->email, $user->username)
+             * ->subject(Lang::get('confide::confide.alerts.account_created.subject'));
+             * }
+             * );
+             *
+             * }
+             */
+
+            $title = 'Account Activated!';
+            return View::make('admin/users/confirmation_email', compact('users', 'title'));
+
         }
     }
-    
+
 }
