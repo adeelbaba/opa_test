@@ -313,8 +313,14 @@ class AdminUsersController extends AdminController
                                 @if($username == \'admin\')
                                 @else
                                     <a href="{{{ URL::to(\'admin/users/\' . $id . \'/delete\' ) }}}" class="iframe btn btn-xs btn-danger">{{{ Lang::get(\'button.delete\') }}}</a>
-                                @endif')
+                                @endif
+                                @if($confirmed == 0)
+                                    <a href="{{{ URL::to(\'admin/users/\' . $id . \'/activate\' ) }}}" class="iframe btn btn-xs btn-info">{{{ Lang::get(\'Activate\') }}}</a>
+                                    <a href="{{{ URL::to(\'admin/users/\' . $id . \'/reject\' ) }}}" class="iframe btn btn-xs btn-info">{{{ Lang::get(\'Reject\') }}}</a>
+                               @endif
+            ')
             ->remove_column('id')
+            ->remove_column('isRejected')
             ->make();
     }
 
