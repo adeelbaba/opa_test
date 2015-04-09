@@ -339,7 +339,7 @@ class AdminUsersController extends AdminController
                 function ($message) use ($user) {
                     $message
                         ->to($user->email, $user->username)
-                        ->subject('Open-Payments');
+                        ->subject('OpenPaymentsAnalytics - User Account Update');
 
                 });
 
@@ -377,7 +377,7 @@ class AdminUsersController extends AdminController
                 function ($message) use ($user) {
                     $message
                         ->to($user->email, $user->username)
-                        ->subject('Open-Payments Account Activated');
+                        ->subject('OpenPaymentsAnalytics - Your Account is Ready');
 
                 });
             /**
