@@ -1,6 +1,3 @@
-<h1>
-    OpenPayments Analytics Account Activated!<br>
-</h1>
 <p>
 <br>
 Hello! {{$name}};<br>
@@ -15,6 +12,7 @@ For technical assistance, please reach out to support@openpaymentsanalytics.com<
 <br>
 Sincerely,<br>
 Open Payments Analytics Team<br>
+
 About Streebo: <br>
 <i>Streebo software and consulting services is<br>a global solutions provider with customers<br>in the US, EMEA, and EU, and has been <br>identified by Inc.500 as one of the<br>fastest growing enterprises three years in a row.</i><br> 
 Website: http://www.streebo.com <br>
@@ -25,6 +23,5 @@ Website: http://www.streebo.com <br>
 <br>
 <small>
 To ensure delivery of Open Payment Analytics emails to your inbox, please add account@openpaymentsanalytics.com to your Email Address Book or Safe List. <br>
-<br>
 You received this email at  because you registered for Open Payments Analytics.<br>
 </small>
