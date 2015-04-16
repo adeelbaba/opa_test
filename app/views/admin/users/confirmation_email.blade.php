@@ -6,7 +6,7 @@
         
         
         <div class="alert alert-success alert-block">
-             Email has been sent to the respected user.
+             Email has been sent to the respective user.
         </div>
 	<!-- ./ tabs -->
 
