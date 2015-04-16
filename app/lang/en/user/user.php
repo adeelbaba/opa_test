@@ -19,6 +19,6 @@ return array(
 	'profile'               => 'Profile',
 	'user_account_is_not_confirmed'          => 'User Account is not confirmed.',
 	'user_account_updated'          => 'User Account updated.',
-	'user_account_created'          => 'Thank you for registering. We are only accepting users from pharmaceuticals at this time. We will review your request and will be in touch shortly.',
+	'user_account_created'          => 'Thank you for registering. We are only accepting users from pharmaceuticals at this time. We will review your request and will be in touch shortly.'
 
 );

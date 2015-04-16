@@ -84,6 +84,7 @@
 			var c_startPage = c_pages[0];
 			var c_dataTableName = "open_payment_view";
 			var c_filteringSchemeName = "Company_Filter";
+			var c_markingPie = "company_pie";
 			
 			//
 			// Fields
@@ -126,13 +127,13 @@
 				while(company.charAt(company.length-1) ==" " ){company = company.substring(0,company.length-1);}
 
 			    var comp = new spotfire.webPlayer.FilterSettings();
-
+				
 			    if (!isNullOrEmpty(company)) {
 			        switch (company) {
 			            case '(All)':
 			                comp.operation = spotfire.webPlayer.filteringOperation.ADDALL;
 			                break;
-
+							
 			            case '(None)':
 			                comp.operation = spotfire.webPlayer.filteringOperation.REMOVEALL;
 			                break;
@@ -143,6 +144,9 @@
 			                break;
 			        }
 
+					app.analysisDocument.marking.setMarking( "company_pie", c_dataTableName, "1", spotfire.webPlayer.markingOperation.CLEAR);
+					app.analysisDocument.marking.setMarking( "company_time", c_dataTableName, "1", spotfire.webPlayer.markingOperation.CLEAR);
+					
 			        app.analysisDocument.filter.setFilter(
 						c_filteringSchemeName,
 						c_dataTableName,
@@ -279,7 +283,7 @@
 			<span class = "alert col-md-12 col-xs-12 error-login text-center" id="error" style="display:none; margin-top: 5px;"></span>
 			</div>
 			<td>
-			<div class="col-md-12 col-xs-12">
+			<div class="col-md-12 col-xs-12" style = "padding: 0px;">
 			<table class="table table-striped table-hover" style="display:none;" id="InfoTab">
 			<thead>
 				<tr>

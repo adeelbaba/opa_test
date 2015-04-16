@@ -37,14 +37,6 @@ h4 {
 }
 
 
-
-
-
-
-
-
-
-
 /*custom style sheet*/
 html ,body{
 	font-family: 'Lato', sans-serif;
@@ -53,7 +45,7 @@ html ,body{
 /*header*/
 
 header{
-	background-image:url(../img/header-background.jpg);
+	background-image:url(../img/header-background.png);
 	background-repeat:no-repeat;
     margin: 0 auto;
     padding: 0 auto;
@@ -64,7 +56,7 @@ header{
 }
 
 .header-home{
-	background-image:url(../img/header-home.jpg);
+	background-image:url(../img/header-home.png);
 	background-repeat:no-repeat;
     margin: 0 auto;
     padding: 0 auto;
@@ -259,7 +251,7 @@ header{
 	padding:5px;
 }
 .succ-color{
-	background-color: #a5be59 !important;
+	background-color: #4BA04B !important;
 }
 
 .why-to{
@@ -311,13 +303,13 @@ header{
 }
 
 .login-right-bg {
-	background-image: url(../img/sec-login-new.jpg);
+	background-image: url(../img/sec-login-new.png);
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 }
 
 .signup-right-bg {
-	background-image: url(../img/signup-bck-new.jpg);
+	background-image: url(../img/signup-bck-new.png);
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 	

@@ -140,6 +140,9 @@
 			                break;
 			        }
 
+					app.analysisDocument.marking.setMarking( "specialty_company", c_dataTableName, "1", spotfire.webPlayer.markingOperation.CLEAR);
+					app.analysisDocument.marking.setMarking( "specialty_time", c_dataTableName, "1", spotfire.webPlayer.markingOperation.CLEAR);
+					
 			        app.analysisDocument.filter.setFilter(
 						c_filteringSchemeName,
 						c_dataTableName,
@@ -277,7 +280,7 @@
 			<span class = "alert col-md-12 col-xs-12 error-login text-center" id="error" style="display:none; margin-top: 5px;"></span>
 			</div>
 			<td>
-			<div class="col-md-12 col-xs-12">
+			<div class="col-md-12 col-xs-12" style = "padding: 0px;">
 			<table class="table table-striped table-hover" style="display:none;">
 			<thead>
 				<tr>

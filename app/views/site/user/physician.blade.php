@@ -144,6 +144,9 @@
 			                break;
 			        }
 
+					app.analysisDocument.marking.setMarking( "physician_pie", c_dataTableName, "1", spotfire.webPlayer.markingOperation.CLEAR);
+					app.analysisDocument.marking.setMarking( "physician_time", c_dataTableName, "1", spotfire.webPlayer.markingOperation.CLEAR);
+					
 			        app.analysisDocument.filter.setFilter(
 						c_filteringSchemeName,
 						c_dataTableName,
@@ -175,7 +178,6 @@
 					  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 						{
 							obj = JSON.parse(xmlhttp.responseText);
-							
 							document.getElementById("name").innerHTML = obj[0].name;
 							document.getElementById("spec").innerHTML = obj[0].spec;
 							document.getElementById("city").innerHTML = obj[0].city;
@@ -283,7 +285,7 @@
 			<span class = "alert col-md-12 col-xs-12 error-login text-center" id="error" style="display:none; margin-top: 5px;"></span>
 			</div>
 			<td>
-			<div class="col-md-12 col-xs-12">
+			<div class="col-md-12 col-xs-12" style = "padding: 0px;">
 			<table class="table table-striped table-hover" style="display:none;">
 			<thead>
 				<tr>

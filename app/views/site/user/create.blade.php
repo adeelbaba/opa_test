@@ -2,7 +2,7 @@
 
 {{-- Web site Title --}}
 		@section('title')
-		- OpenPaymentsAnalytics - Request an Account
+		 OpenPaymentsAnalytics - Request an Account
 		@stop
 		@section('meta_keywords')
 		<meta name="keywords" content="Request an Account, Sign up at Open Payments Analytics, Register at Open Payments Analytics, Open Payments Analytics, OPA, CMS,  Streebo Inc." />
@@ -40,7 +40,7 @@ table, tr, th, td {
 	<section class="container">
 	<div class="row">
 				<div	class="col-md-12">
-					<p class="p-mrg">Thank you for choosing Open Payment Analytics: a one-of-its kind tool, created specifically for the Pharma professional.  At this time we are only accepting registrations for individuals within the Life Sciences industry, we hope to see you here as our tool expands to reach a wider audience. </p>
+					<p class="p-mrg">At this time, we are only accepting registrations from individuals within the Life Sciences industry. Please proceed with the registration process if you belong to a Pharmaceutical using your corporate email address.</p>
 				</div>
 	</div>
 	<hr>
@@ -162,15 +162,15 @@ table, tr, th, td {
 	
 			<table class="table  text-center" id="tab" style="margin:70px; width: 300px; ">
 			<tr>
-			<td style="vertical-align: middle;"><img src="{{{ asset('assets/img/user1.png') }}}" height="100 px" width="100px"></td>
+			<td style="vertical-align: middle;"><img src="{{{ asset('assets/img/ra1.png') }}}" height="100 px" width="100px"></td>
 			<td style="vertical-align: middle;"><p class="text-center">Gain valuable insights</p></td>
 			</tr>
 			<tr>
-			<td style="vertical-align: middle;"><img src="{{{ asset('assets/img/user2.png') }}}" height="100 px" width="100px"></td>
+			<td style="vertical-align: middle;"><img src="{{{ asset('assets/img/ra2.png') }}}" height="100 px" width="100px"></td>
 			<td style="vertical-align: middle;"><p class="text-center">Optimize your business model</p></td>
 			</tr>
 			<tr>
-			<td style="vertical-align: middle;"><img src="{{{ asset('assets/img/user3.png') }}}" height="100 px" width="100px"></td>
+			<td style="vertical-align: middle;"><img src="{{{ asset('assets/img/user2.png') }}}" height="100 px" width="100px"></td>
 			<td style="vertical-align: middle;"><p class="text-center">MAKE open payments data <br> work for YOU</p></td>
 			</tr>
 			</table>

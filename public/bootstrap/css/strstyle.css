@@ -31,11 +31,13 @@ background: none;
 }
 
 .container-fluid{
+ padding-left: 0px !important;
  padding-right: 0px !important;
 }
 
 .row{
  margin-right: 0px !important;
+ margin-left: 0px !important;
 }
 
 .sub-header {
@@ -49,4 +51,11 @@ background: none;
 
 .results {
   padding-bottom: 15px !important;
+  padding-left: 0px !important;
+  vertical-align:top;
 }
+
+.twitter-typeahead{
+	vertical-align: top !important;
+}
+

@@ -60,9 +60,9 @@ class UserController extends BaseController {
 				function ($message) use ($user) {
                         $message
                             ->to('adeel.ahmed@streebo.com')
-							->to('aneeqa.zia@streebo.com')
-							->to('muhammad.shahzeb@streebo.com')
-							->to('account@openpaymentsanalytics.com')
+							//->to('aneeqa.zia@streebo.com')
+							//->to('muhammad.shahzeb@streebo.com')
+							//->to('account@openpaymentsanalytics.com')
                             ->subject('New Open-Payments Account Created');});
 			}
 			/**
@@ -346,6 +346,7 @@ class UserController extends BaseController {
 		
 		if( $flag == "1")
 		{
+			
 			$compquery = substr_replace($compquery, "", -1);
 			Session::put('company',$compquery);
 			
@@ -394,14 +395,20 @@ class UserController extends BaseController {
 		
 		if( $flag == "1")
 		{
+			Log::info(">>> Getting Physician Info with 1 " . $phyquery);
+			 
 			$phyquery = substr_replace($phyquery, "", -1);
 			Session::put('physician',$phyquery);
 
-			$results = DB::table('physician')->select('Full_Name', 'Recipient_City', 'Recipient_State', 'Physician_Specialty')->where('Full_Name', 'LIKE', '%' . $phyquery . '%')->distinct('Full_Name')->orderBy('Full_Name')->take(100)->remember(60)->get();
+			Log::info(">>> Getting Physician Info  without 1 " . $phyquery);
+			
+			$results = DB::table('physician')->select('Full_Name', 'Recipient_City', 'Recipient_State', 'Physician_Specialty')->where('Full_Name', 'LIKE', '%' . $phyquery . '%')->remember(60)->get();
+			Log::info(">>> Getting Physician Info Query Result - Done!");
 			$count = 0;
 			if ($results)
 			{
 				foreach ($results as $result) :
+				Log::info(">>> Getting Physician Info In Foreach Loop - Done!" . $result->Full_Name);
 					$data[$count]['name'] = $result->Full_Name;
 					$data[$count]['spec'] = $result->Physician_Specialty;
 					$data[$count]['city'] = $result->Recipient_City;
@@ -415,7 +422,11 @@ class UserController extends BaseController {
 				return Response::json($results);
 		}
 		else{
+			Log::info(">>> Getting Physician Autocomplete Results without %" . $phyquery);
+			
 			$phyquery = str_replace(" ", "%", $phyquery);
+			
+			Log::info(">>> Getting Physician Autocomplete Results with %" . $phyquery);
 			
 			$results = DB::table('physician')->select('Full_Name')->where('Full_Name', 'LIKE', '%' . $phyquery . '%')->distinct('Full_Name')->orderBy('Full_Name')->take(100)->remember(60)->get();
 			$count = 0;
