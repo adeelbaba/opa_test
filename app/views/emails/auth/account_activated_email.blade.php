@@ -1,6 +1,6 @@
 <p>
 <br>
-Hello! {{$name}}:"<br>
+Hello! {{$name}};<br>
 <br>
 Thank you for registering at Open Payment Analytics. We hope you will enjoy using OPA and that it would add value to your organization. We would love to hear your feedback on how to make OPA even better! Feel free to contact us at info@openpaymentsanalytics.com .<br>
 <br>
