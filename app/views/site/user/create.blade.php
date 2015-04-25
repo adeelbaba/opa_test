@@ -159,21 +159,7 @@ table, tr, th, td {
 		</div>
 	</div>
 		<div class="col-md-6">
-	
-			<table class="table  text-center" id="tab" style="margin:70px; width: 300px; ">
-			<tr>
-			<td style="vertical-align: middle;"><img src="{{{ asset('assets/img/ra1.png') }}}" height="100 px" width="100px"></td>
-			<td style="vertical-align: middle;"><p class="text-center">Gain valuable insights</p></td>
-			</tr>
-			<tr>
-			<td style="vertical-align: middle;"><img src="{{{ asset('assets/img/ra2.png') }}}" height="100 px" width="100px"></td>
-			<td style="vertical-align: middle;"><p class="text-center">Optimize your business model</p></td>
-			</tr>
-			<tr>
-			<td style="vertical-align: middle;"><img src="{{{ asset('assets/img/user2.png') }}}" height="100 px" width="100px"></td>
-			<td style="vertical-align: middle;"><p class="text-center">MAKE open payments data <br> work for YOU</p></td>
-			</tr>
-			</table>
+			<img style="padding: 90px;" src="{{{ asset('assets/img/registration.png') }}}">
 	</div>
 	</div>
 	</section>

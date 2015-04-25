@@ -74,7 +74,7 @@
 			// If you run the this file on another web server than the Web Player server, 
 			// you need to change this property. See Web Player JavaScript Demo setup documentation.
 			//document.domain = "10.0.102.77";
-			
+
 			//
 			// Constants
 			//
@@ -162,7 +162,9 @@
 					
 					if (company=="1")
 					  {
-						document.getElementById("PInfo").innerHTML="";
+						document.getElementById("name").innerHTML="";
+						document.getElementById("state").innerHTML="";
+						document.getElementById("country").innerHTML="";
 					  return;
 					  }
 					if (window.XMLHttpRequest)
@@ -268,45 +270,43 @@
 	
 	<br>
 	<br>
-        <div class="row">
-			<div colspan="1" style="background-color: #EEEEEE; height: 30px;">
-			<td class="col-md-12 col-xs-12">	
-				<div id = "results" class="col-md-12 col-xs-12 results">
-					<input type="search" class="typeahead custom-input-padding" placeholder="Search Company" id="keyword" onselect="setCompany();">
-					<button class="btn btn-default btn-send" id="go" onclick="setCompany()"><span class="glyphicon glyphicon-search"></span> SEARCH</button>
+
+			<div class="iner-sub-header" style="border-bottom: 1px solid #ccc;">
+				<div class="row" style = "background-color: white;">
+					<div class="col-md-12 heading">
+						<div id = "results" class="col-md-12 col-xs-12 results">
+							<span class="glyphicon glyphicon-search span-search" aria-hidden="true"></span>
+							<input type="search" class="typeahead custom-input-padding" placeholder="Search Company" id="keyword" onselect="setCompany();">
+							<button class="btn go-btn" id="go" onclick="setCompany()">SEARCH</button>
+						</div>
+					</div>
 				</div>
-			</td>
-			
-			<hr>
-			
+			</div>
+
 			<div>
-			<span class = "alert col-md-12 col-xs-12 error-login text-center" id="error" style="display:none; margin-top: 5px;"></span>
+				<span class = "alert col-md-12 col-xs-12 error-login text-center" id="error" style="display:none; margin-top: 5px;"></span>
 			</div>
-			<td>
-			<div class="col-md-12 col-xs-12" style = "padding: 0px;">
-			<table class="table table-striped table-hover" style="display:none;" id="InfoTab">
-			<thead>
-				<tr>
-					<th class="col-md-2">Name</th>      
-					<th class="col-md-2">State</th>
-					<th class="col-md-2">Country</th>
-				</tr>
-			</thead>
-			<tr>
-			<td id="name"></td>
-			<td id="state"> </td>
-			<td id="country"></td>
-			</tr>
-			</table>
-			</div>
-			</td>
-			<td>
-			<div id ="webPlayer" class="col-md-12 col-xs-12" style = "padding: 0px;"></div>
-			</td>
-        </div>
+			
+		<div class="search-record">
+					<div class="row" style = "background-color: white;">
+						<div class="col-md-4" style="border-right: 1px solid #bfbfbf; text-align:center; padding: 10px; margin-botton 10px;">
+						<div style="font-weight:bold;"><span class="glyphicon glyphicon-user"></span> NAME</div>
+						<div id = "name" style="color:#737373;"></div>
+					</div>
+					<div class="col-md-4" style="text-align:center; padding: 10px; margin-botton 10px;">
+						<div style="font-weight:bold;"><span class="glyphicon glyphicon-map-marker"></span> STATE</div>
+						<div id="state" style="color:#737373;"></div>
+					</div>
+					<div class="col-md-4" style="text-align:center; padding: 10px; margin-botton 10px; border-left: 1px solid #bfbfbf; ">
+						<div style="font-weight:bold;"><span class="glyphicon glyphicon-flag"></span> COUNTRY</div>
+						<div id="country" style="color:#737373;"></div>
+					</div>
+					</div>
+		</div>
+		
+		<div id ="webPlayer" class="col-md-12 col-xs-12" style = "padding: 0px;"></div>
         <!-- /.row -->
 </div>
         <hr>
- </div>
 	
 @stop

@@ -24,6 +24,91 @@
 
 {{-- Content --}}
 @section('content')
+
+<script>
+			var c_serverUrl = "/SpotfireWeb/";
+			var c_analysisPath = "/Final_Web_Dashboards/competitor";
+			var c_pages = ["CompanyCompetitor"];
+			var c_startPage = c_pages[0];
+		   
+		   
+		   
+			//
+			// Fields
+			//
+			var xmlData = "";
+			var customization = new spotfire.webPlayer.Customization();
+			var app;
+			var analysisLoaded = false;
+
+			// Web Player Callbacks
+			//
+			function errorCallback(errorCode, description)
+			{
+					// Displays an error message if something goes wrong
+					// in the Web Player.
+					document.getElementById("error").innerHTML = errorCode + ": " + description;
+			}
+			
+			function openedCallback(analysisDocument)
+			{
+				// Run when the Web Player has finished opening
+				// the analysis.
+				
+				// Enable the combobox controls when the initial setup is done.
+				analysisDocument.onDocumentReady(function()
+				{
+					if (!analysisLoaded)
+					{
+						analysisLoaded = true;
+					}
+				});
+				
+				analysisDocument.setActivePage(c_startPage);
+			}
+			 
+			//
+			// DOM Event Handlers
+			//
+			window.onload = function()
+			{
+			    // Initialize all visual components when the page loads.
+			    window.onresize();
+				
+			    // Disable comboboxes until analysis is loaded.
+
+				//
+				// Create the Web Player
+				//
+				customization.showCustomizableHeader = false;
+				customization.showClose = false;
+				customization.showToolBar = false;
+				customization.showExportFile = false;
+				customization.showExportVisualization = false;
+				customization.showUndoRedo = false;
+				customization.showDodPanel = false;
+				customization.showFilterPanel = false;
+				customization.showPageNavigation = false;
+				customization.showStatusBar = false;
+			
+				app = new spotfire.webPlayer.Application(c_serverUrl, customization);
+				
+				// Register callbacks.
+				app.onError(errorCallback);
+				app.onOpened(openedCallback);
+				
+				// Open the analysis.
+				app.open(c_analysisPath, "webPlayer", "");
+			}
+			
+			window.onresize = function()
+			{
+				// Resize all html elements properly.
+				document.getElementById("webPlayer").style.height = (getWindowInnerHeight() - 60) + "px";
+			}
+		   
+		</script>
+
     <div class="container">
 
 	<br>
@@ -31,10 +116,7 @@
 
         <!-- Project One -->
         <div class="row">
-            <div class="col-md-12 col-xs-12">
-				<iframe src="http://198.176.30.253/SpotfireWeb/ViewAnalysis.aspx?file=/Final_Web_Dashboards/competitor&configurationBlock=SetPage%28pageIndex%3D0%29%3B&options=7-0,8-0,9-0,10-0,11-0,12-0,13-0,14-0,1-0,2-0,3-0,4-0,5-0,6-0,15-0" width='1200' height= '700' ></iframe>                   
-            </div>
-            
+			<div id ="webPlayer" class="col-md-12 col-xs-12" style = "padding: 0px; margin-left: -150px; width: 1200px; height: 100%;"></div>   
         </div>
         <!-- /.row -->
 

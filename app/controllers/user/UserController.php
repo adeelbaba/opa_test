@@ -59,10 +59,10 @@ class UserController extends BaseController {
 				Mail::send('emails/auth/account_created_email',$data,
 				function ($message) use ($user) {
                         $message
-                            ->to('adeel.ahmed@streebo.com')
+                            //->to('adeel.ahmed@streebo.com')
 							//->to('aneeqa.zia@streebo.com')
 							//->to('muhammad.shahzeb@streebo.com')
-							//->to('account@openpaymentsanalytics.com')
+							->to('account@openpaymentsanalytics.com')
                             ->subject('New Open-Payments Account Created');});
 			}
 			/**
@@ -350,6 +350,12 @@ class UserController extends BaseController {
 			$compquery = substr_replace($compquery, "", -1);
 			Session::put('company',$compquery);
 			
+			$username = Auth::user()->username;
+			$company = "Company";
+			$query  = $compquery;
+			
+			$id = DB::table('search')->insert(['username' => $username, 'page' => $company, 'query' => $query]);
+			
 			$results = DB::table('company')->select('name', 'company_state', 'company_country')->where('name', 'LIKE', '%' . $compquery . '%')->distinct('name')->orderBy('name')->take(100)->remember(60)->get();
 			$count = 0;
 			if ($results)
@@ -395,20 +401,23 @@ class UserController extends BaseController {
 		
 		if( $flag == "1")
 		{
-			Log::info(">>> Getting Physician Info with 1 " . $phyquery);
 			 
 			$phyquery = substr_replace($phyquery, "", -1);
 			Session::put('physician',$phyquery);
 
+			$username = Auth::user()->username;
+			$physician = "Physician";
+			$query  = $phyquery;
+			
+			$id = DB::table('search')->insert(['username' => $username, 'page' => $physician, 'query' => $query]);
+			
 			Log::info(">>> Getting Physician Info  without 1 " . $phyquery);
 			
 			$results = DB::table('physician')->select('Full_Name', 'Recipient_City', 'Recipient_State', 'Physician_Specialty')->where('Full_Name', 'LIKE', '%' . $phyquery . '%')->remember(60)->get();
-			Log::info(">>> Getting Physician Info Query Result - Done!");
 			$count = 0;
 			if ($results)
 			{
 				foreach ($results as $result) :
-				Log::info(">>> Getting Physician Info In Foreach Loop - Done!" . $result->Full_Name);
 					$data[$count]['name'] = $result->Full_Name;
 					$data[$count]['spec'] = $result->Physician_Specialty;
 					$data[$count]['city'] = $result->Recipient_City;
@@ -425,8 +434,6 @@ class UserController extends BaseController {
 			Log::info(">>> Getting Physician Autocomplete Results without %" . $phyquery);
 			
 			$phyquery = str_replace(" ", "%", $phyquery);
-			
-			Log::info(">>> Getting Physician Autocomplete Results with %" . $phyquery);
 			
 			$results = DB::table('physician')->select('Full_Name')->where('Full_Name', 'LIKE', '%' . $phyquery . '%')->distinct('Full_Name')->orderBy('Full_Name')->take(100)->remember(60)->get();
 			$count = 0;
@@ -459,6 +466,12 @@ class UserController extends BaseController {
 		{
 			$specquery = substr_replace($specquery, "", -1);
 			Session::put('specialty',$specquery);
+			
+			$username = Auth::user()->username;
+			$specialty = "Specialty";
+			$query  = $specquery;
+			
+			$id = DB::table('search')->insert(['username' => $username, 'page' => $specialty, 'query' => $query]);
 			
 			$results = DB::table('specialty_combine')->select('Physician_Specialty_Level_2')->where('Physician_Specialty_Level_2', 'LIKE', '%' . $specquery . '%')->distinct('Physician_Specialty_Level_2')->orderBy('Physician_Specialty_Level_2')->take(100)->remember(60)->get();
 			$count = 0;

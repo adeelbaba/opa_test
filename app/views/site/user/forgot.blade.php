@@ -14,12 +14,6 @@
 		<meta name="description" content="Recover your open payments analytics account password" />
         @show
 
-
-
-Title - 
-Keyword: 
-Description: 
-
 {{-- Content --}}
 @section('content')
 <div class="row sub-header">

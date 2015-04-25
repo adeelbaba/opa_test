@@ -65,7 +65,7 @@ h4 {
  	border: 1px solid #0095d6;
  	padding-top: 4px !important;
     padding-bottom: 4px !important;
-    top: 9px;
+    top: 13px;
     margin-right: 10px;
  	
 }
@@ -75,7 +75,7 @@ h4 {
 
 .nav-top-mrg-sz{
 	 	margin-top: 18px;
-	  	font-size: smaller;
+	  	font-size: 12px;
 	  	font-weight: bold;
 }
 
@@ -134,7 +134,7 @@ html ,body{
 /*header*/
 
 header{
-	background-image:url(../img/header-background.jpg);
+	background-image:url(../img/header-background.png);
 	background-repeat:no-repeat;
     margin: 0 auto;
     padding: 0 auto;
@@ -145,7 +145,7 @@ header{
 }
 
 .header-home{
-	background-image:url(../img/header-home.jpg);
+	background-image:url(../img/header-home.png);
 	background-repeat:no-repeat;
     margin: 0 auto;
     padding: 0 auto;
@@ -376,7 +376,8 @@ header{
 .btn-get-started{
 	margin-top: 20px;
 	
-	color:#0095d6;
+	color:#fff;
+    background: #0095d6;
 	border: 2px solid #fff;
 	font-size: 13px;
 	font-weight: bold;
@@ -386,8 +387,8 @@ header{
 }
 
 .btn-get-started:focus, .btn-get-started:hover {
-    color:#fff;
-    background: #0095d6;
+	color: #0095d6;
+    background-image: #fff;
 
 }
 .margin-nav-uls-left{
@@ -404,13 +405,13 @@ header{
 }
 
 .login-right-bg {
-	background-image: url(../img/sec-login-new.jpg);
+	background-image: url(../img/sec-login-new.png);
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 }
 
 .signup-right-bg {
-	background-image: url(../img/signup-bck-new.jpg);
+	background-image: url(../img/signup-bck-new.png);
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 	

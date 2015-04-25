@@ -158,7 +158,7 @@
 					
 					if (specialty=="1")
 					  {
-						document.getElementById("PInfo").innerHTML="";
+						document.getElementById("specialty").innerHTML="";
 					  return;
 					  }
 					if (window.XMLHttpRequest)
@@ -265,44 +265,36 @@
         <br>
 		<br>
 
-        <div class="row">
-            <!-- Blog Entries Column -->
-			<div colspan="1" style="background-color: #EEEEEE; height: 30px;">
-			<td class="col-md-12 col-xs-12">	
-				<div id = "results" class="col-md-12 col-xs-12 results">
-					<input type="search" class="typeahead custom-input-padding" placeholder="Search Specialty" id="keyword" onselect="setSpecialty();">
-					<button class="btn btn-default btn-send" id="go" onclick="setSpecialty()"><span class="glyphicon glyphicon-search"></span> SEARCH</button>
+        		<div class="iner-sub-header" style="border-bottom: 1px solid #ccc;">
+				<div class="row" style = "background-color: white;">
+					<div class="col-md-12 heading">
+						<div id = "results" class="col-md-12 col-xs-12 results">
+							<span class="glyphicon glyphicon-search span-search" aria-hidden="true"></span>
+							<input type="search" class="typeahead custom-input-padding" placeholder="Search Specialty" id="keyword" onselect="setSpecialty();">
+							<button class="btn go-btn" id="go" onclick="setSpecialty()">SEARCH</button>
+						</div>
+					</div>
 				</div>
-			</td>
-			<td>
-			<br>
-			<div>
+		</div>
+			
+		<div>
 			<span class = "alert col-md-12 col-xs-12 error-login text-center" id="error" style="display:none; margin-top: 5px;"></span>
+		</div>
+			
+			<div class="search-record">
+					<div class="row" style = "background-color: white;">
+						<div class="col-md-4" style="padding: 10px; margin-botton 10px; margin-left: 20px;">
+							<div style="font-weight:bold;"><span><img src="{{{ asset('assets/img/searchspecialtyb.png') }}}"> </span> Specialty</div>
+							<div id = "specialty" style="color:#737373;"></div>
+						</div>
+					</div>
 			</div>
-			<td>
-			<div class="col-md-12 col-xs-12" style = "padding: 0px;">
-			<table class="table table-striped table-hover" style="display:none;">
-			<thead>
-				<tr>
-					<th class="col-md-2">Specialty</th>
-				</tr>
-			</thead>
-			<tr>
-			<td id="specialty"></td>
-			</tr>
-			</table>
-			</div>
-			</td>
-            <div id ="webPlayer" class="col-md-12 col-xs-12" style = "padding: 0px;"></div>
-			</td>
+		
+		
+		<div id ="webPlayer" class="col-md-12 col-xs-12" style = "padding: 0px;"></div>
             <!-- Blog Sidebar Widgets Column -->
 
         </div>
         <!-- /.row -->
-</div>
-        <hr>
- </div>
-		
-		
 		
 @stop

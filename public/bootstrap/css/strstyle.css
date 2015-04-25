@@ -12,11 +12,15 @@
 }
 
 .custom-input-padding {
-  padding: 0px 10px 0px 10px;
+  padding: 0px 15px 0px 25px;
 }
 
 .navbar-nav li:hover{
 background: none;
+}
+
+.nav-focus:hover{
+	font-size: 14px !important;
 }
 
 
@@ -57,5 +61,14 @@ background: none;
 
 .twitter-typeahead{
 	vertical-align: top !important;
+}
+
+.nav-sign-ss{
+  padding-right: 25px;
+}
+
+.search-record {
+	padding: 0 !important;
+	margin-bottom:  0 !important;
 }
 

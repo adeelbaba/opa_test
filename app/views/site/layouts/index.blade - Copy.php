@@ -6,17 +6,17 @@
 		<meta charset="utf-8" />
 		<title>
 			@section('title')
-			OpenPayments Analytics
+			Open Payments Analytics: Insights into CMS Open Payments Data
 			@show
 		</title>
 		@section('meta_keywords')
-		<meta name="keywords" content="OpenPayments, Open Payments Analytics, OpenPaymentsAnalytics" />
+		<meta name="keywords" content="Open Payments Analytics, OPA, CMS, Sunshine Act, Open Payments Insights, Streebo Inc." />
 		@show
 		@section('meta_author')
 		<meta name="author" content="Streebo" />
 		@show
 		@section('meta_description')
-		<meta name="description" content="Sunshine Act, OpenPayments Data Analysis, OpenPayments" />
+		<meta name="description" content="Gain insights into open payments data made public by CMS" />
                 @show
 		<!-- Mobile Specific Metas
 		================================================== -->
@@ -27,12 +27,18 @@
         <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.min.css')}}">
 		<link rel="stylesheet" href="{{asset('bootstrap/css/style.css')}}">
+		<link rel="stylesheet" href="{{asset('bootstrap/css/strstyle.css')}}">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400,700,900">
 		<style>
         .container-fluid {
 			padding-right: 0px;
 			padding-left: 0px;
         }
+		footer{
+		  position: absolute;
+		  display: block;
+		  width: 100%;
+		}
 		@section('styles')
 		@show
 		</style>
@@ -44,18 +50,13 @@
 
 		<!-- Favicons
 		================================================== -->
-		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{{ asset('assets/ico/apple-touch-icon-144-precomposed.png') }}}">
-		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{{ asset('assets/ico/apple-touch-icon-114-precomposed.png') }}}">
-		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{{ asset('assets/ico/apple-touch-icon-72-precomposed.png') }}}">
-		<link rel="apple-touch-icon-precomposed" href="{{{ asset('assets/ico/apple-touch-icon-57-precomposed.png') }}}">
-		<link rel="shortcut icon" href="{{{ asset('assets/ico/favicon.png') }}}">
+		<link rel="icon" href="{{{ asset('assets/ico/favicon.png') }}}">
 		
 		<!-- Javascripts
 		================================================== -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="{{asset('bootstrap/js/jquery.js')}}"></script>
         <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
-		<script type="application/javascript" src="http://198.176.30.253/SpotfireWeb/GetJavaScriptApi.ashx?Version=1.0"></script>
 		<script src="{{asset('bootstrap/js/util.js')}}"></script>
 		<script src="{{asset('bootstrap/js/typeahead.js')}}"></script>
 		<script src="{{asset('bootstrap/js/bloodhound.js')}}"></script>
@@ -72,6 +73,29 @@
 		ga('create', 'UA-61200678-1', 'auto');
 		ga('send', 'pageview');
 		
+		$(function() {
+        //caches a jQuery object containing the header element
+        var header = $(".fade-transparent");
+      
+        $(window).scroll(function() {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 200) {
+                header.removeClass('fade-transparent').addClass("fade-background");
+                $("#img-logo").attr('src','{{{ asset('assets/img/logonewchange.png') }}}');
+                $("a").addClass("nav-top-color");
+                $("a").removeClass("nav-top-transperent");
+                $("ul").removeClass("nav-top li a");
+
+            } else {
+                header.removeClass("fade-background").addClass('fade-transparent');
+                $("#img-logo").attr('src','{{{ asset('assets/img/logonew.png') }}}');
+                $("a").addClass("nav-top-transperent");
+                $("a").removeClass("nav-top-color");
+            }
+			});
+		});
+		
 		</script>
 		
         @yield('scripts')
@@ -83,11 +107,10 @@
 		<!-- To make sticky footer need to wrap in a div -->
 		<!-- Navbar -->
 		<div class="container-fluid">
-			<header class="row">
+		<header class="row header-home">
 		<div class="col-md-12 col-xs-12">
-		<nav class="navbar navbar-default na-bck">
+		<nav class="navbar navbar-default navbar-fixed-top nav-color fade-transparent">
 		
-			 <div class="container-fluid">
                     <div class="navbar-header">
 					  <button type="button" class="navbar-toggle collapsed mob-nav" data-toggle="collapse" data-target=".navbar-collapse">
 						<span class="sr-only">Toggle navigation</span>
@@ -95,56 +118,72 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					  </button>
-					  <a class="navbar-brand" href="{{{ URL::to('') }}}"><img src="{{{ asset('assets/img/logo.png') }}}" class="img-responsive" height="50px;"></a>
+					  <a class="navbar-brand nav-top-transperent" href="{{{ URL::to('') }}}"><img id="img-logo" src="{{{ asset('assets/img/logonew.png') }}}" class="img-responsive" height="50px;"></a>
 					</div>
-				<div class="collapse navbar-collapse border-none">
-                    <ul class="nav navbar-nav navbar-right nav-top">
-                        @if (Auth::check())
-                        @if (Auth::user()->hasRole('admin'))
-							<li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
-                        @endif
-							<li><a href="{{{ URL::to('user') }}}">Logged in as {{{ Auth::user()->username }}}</a></li>
-							<li><a href="{{{ URL::to('user/logout') }}}">Logout</a></li>
-                        @else
-							<li {{ (Request::is('user/create') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('site.sign_up') }}}</a></li>
-							<li {{ (Request::is('user/login') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/login') }}}">Login</a></li>
-                        @endif
+				<div class="collapse navbar-collapse border-none" style="padding-bottom: 25px !important;">
+                    @if (Auth::check())
+					<ul class="nav navbar-nav navbar-center margin-nav-ul-left head-navbar-right nav-top-mrg-sz">
+							<li {{ (Request::is('/') ? ' class="active"' : '') }}><a class="nav-top-color" href="{{{ URL::to('') }}}">HOME</a></li>
+							<li {{ (Request::is('user/company') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/company') }}}">COMPANY</a></li>
+							<li {{ (Request::is('user/physician') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/physician') }}}">PHYSICIAN</a></li>
+							<li {{ (Request::is('user/specialty') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/specialty') }}}">SPECIALTY</a></li>
+							<li {{ (Request::is('user/competition') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/competition') }}}">COMPETITION</a></li>
+							<li {{ (Request::is('contact') ? ' class="active"' : '') }}><a href="{{{ URL::to('contact') }}}">CONTACT US</a></li>
+
+					</ul>
+							
+					<ul class ="nav navbar-nav navbar-right margin-nav-uls-left head-navbar-right nav-sign-ss  nav-top-mrg-sz">
+							@if (Auth::user()->hasRole('admin'))
+								<li><a href="{{{ URL::to('admin') }}}">ADMIN PANEL</a></li>
+							@endif
+							<li><a href="{{{ URL::to('user') }}}">LOGGED IN AS {{{ Auth::user()->username }}}</a></li>
+							<li><a href="{{{ URL::to('user/logout') }}}">LOGOUT</a></li>
+					</ul>
+                    @else
+					<ul class="nav navbar-nav navbar-center margin-nav-ul-left head-navbar-right  nav-top-mrg-sz">
+						<li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">HOME</a></li>
+						<li {{ (Request::is('contact') ? ' class="active"' : '') }}><a href="{{{ URL::to('contact') }}}">CONTACT US</a></li>
+					</ul>
+							
+					<ul class ="nav navbar-nav navbar-right margin-nav-uls-left head-navbar-right nav-sign-ss  nav-top-mrg-sz">
+						<li {{ (Request::is('user/create') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">REQUEST AN ACCOUNT</a></li>
+						<li class="ss" {{ (Request::is('user/login') ? ' class="active"' : '') }}><a class="sign-up-back text-center" style="color: #FFF; padding: 0px !important;   width: 75px;" href="{{{ URL::to('user/login') }}}"><span class="glyphicon glyphicon-lock"></span>LOG IN</a></li>
                     </ul>
-					
-					<ul class="nav navbar-nav navbar-right nav-top">
-                    <li {{ (Request::is('contact') ? ' class="active"' : '') }}><a href="{{{ URL::to('contact') }}}">Contact Us</a></li>
-					</ul>
-					
-					@if (Auth::check())
-						
-					  <ul class="nav navbar-nav navbar-right nav-top">
-						<li {{ (Request::is('user/competition') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/competition') }}}">Competition</a></li>
-					  </ul>
-					  <ul class="nav navbar-nav navbar-right nav-top">
-						<li {{ (Request::is('user/specialty') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/specialty') }}}">Specialty</a></li>
-					  </ul>
-					  <ul class="nav navbar-nav navbar-right nav-top">
-						<li{{ (Request::is('user/physician') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/physician') }}}">Physician</a></li>
-					  </ul>
-					  <ul class="nav navbar-nav navbar-right nav-top">
-								<li {{ (Request::is('user/company') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/company') }}}">Company</a></li>
-					  </ul>
 					@endif
-					
-				
-                    <ul class="nav navbar-nav navbar-right nav-top">
-						<li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">Home</a></li>
-					</ul>
 					<!-- ./ nav-collapse -->
 				</div>
-		</div>
 		</nav>
 		</div>
-		</header>
+		<div class="row mob-mrg">
+		<div class="col-md-12 col-xs-12 text-center">
+		<p class="why-to"><em>Why</em></p>
+		<h1 class="h1-reg">REGISTER</h1>
 		</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-xs-12 text-center">
+			
+		
+				
+			<iframe frameborder="0" width="520" class="video-radius"  style="border: 5px solid white;" height="320" src="//www.dailymotion.com/embed/video/x268hqr" allowfullscreen></iframe>
+		
+		
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-xs-12 text-center" style="padding-bottom: 25px;">
+					<form action ="{{{ URL::to('user/create') }}}">
+						 <button type="submit" class="btn btn-default btn-get-started" style="font-size: 13px !important; width: 150px;">GET STARTED</button>
+					</form>
+			</div>
+			<br>
+		</div>
+		</header>
+		
+		</div>
+		
 		<!-- ./ navbar -->
 		<!-- Container -->
-		<div class="container-fluid">
 			<!-- Notifications -->
 			@include('notifications')
 			<!-- ./ notifications -->
@@ -152,7 +191,6 @@
 			<!-- Content -->
 			@yield('content')
 			<!-- ./ content -->
-		</div>
 		<!-- ./ container -->
 		
 		<!-- the following div is needed to make a sticky footer -->
@@ -161,17 +199,17 @@
 		
 		
 		<footer class="row">
-		<div class="container-fluid">	
+		<div class="container">	
 		<div class="col-md-6 col-sm-4 col-xs-12">
 		
 			
-				<p class="p-mrg p-cen">&copy;2015 <a href="#"><span class="streebo-color">Streebo</span></a> All Rights Reserved</p>
+				<p class="p-mrg p-cen">&copy;2015 <a href="//www.streebo.com"><span class="streebo-color">Streebo</span></a> All Rights Reserved</p>
 		</div>
 		<div class="col-md-6 col-sm-8 col-xs-12">
 			<ul class="nav navbar-nav navbar-right nav-top nav-cen">
-		        <li><a href="{{{ URL::to('') }}}">About Us</a></li>
-		      	<li><a href="{{{ URL::to('user/create') }}}">Request an Account</a></li>
-		      	<li><a href="{{{ URL::to('contact') }}}">Contact Us</a></li>
+		        <li><a href="{{{ URL::to('') }}}">ABOUT US</a></li>
+		      	<li><a href="{{{ URL::to('user/create') }}}">REQUEST AN ACCOUNT</a></li>
+		      	<li><a href="{{{ URL::to('contact') }}}">CONTACT US</a></li>
 		      	
 		    </ul>
 		</div>

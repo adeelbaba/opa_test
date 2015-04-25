@@ -6,9 +6,9 @@
 	<div class="row sub-header">
 		<div class="container">
 		<div class="col-md-12">
-
-				<p class="p-mrg"><span class="cnt-btm">INTRODUCING </span> OPEN PAYMENTS ANALYTICS</p>
-
+			<h4 class="heading-left-margin">
+				<span class="cnt-btm">INTRODUCING </span> OPEN PAYMENTS ANALYTICS
+			</h4>
 		</div>
 		</div>
 	</div>
@@ -33,10 +33,9 @@
 	<div class="row sub-header">
 		<div class="container">
 		<div class="col-md-12 text-center">
-		
-			
-				<p class="p-mrg"><span class="cnt-btm">Find out </span> how YOU can use OPEN PAYMENTS ANALYTICS</p>
-		
+		<h4 class="heading-left-margin">
+				<span class="cnt-btm">Find out </span> how YOU can use OPEN PAYMENTS ANALYTICS
+		</h4>
 		</div>
 		</div>
 	</div>
@@ -111,9 +110,10 @@
 		<div class="container text-center">
 		<div class="col-md-12">
     			<form action = "{{{ URL::to('user/create') }}}">
-				  <button class="btn btn-info" style="font-size: 13px !important; width: 150px;">GET STARTED</button>
+				  <button class="btn btn-default btn-get-started" style="font-size: 13px !important; width: 150px;">GET STARTED</button>
 				</form>
 		</div>
 		</div>
+		<br>
 	</div>
 @stop
