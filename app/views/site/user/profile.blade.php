@@ -11,10 +11,9 @@
 	<div class="row sub-header">
 		<div class="container">
 		<div class="col-md-12">
-		
-			
-				<p class="p-mrg" style = "  padding: 0px;"><span class="cnt-btm">USER PROFILE</span> </p>
-		
+			<p>	
+				<span class="cnt-btm">USER PROFILE</span>
+			</p>
 		</div>
 	</div>
 	</div>

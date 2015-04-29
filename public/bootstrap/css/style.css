@@ -1,4 +1,23 @@
+.faqs-right-bg{
+  background-image: url(../img/faqs.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-size: 68% 80%;
+  background-position: center center;
+  min-height: 335px;
+  margin-top: 30px;
+}
 
+.faqs-text{
+	font-weight: bold;
+	color: #000;
+}
+
+.head-search{
+	color: #a6a6a6;
+	  font-size: 15px;
+	  margin-left: -8px;
+}
 
 .margin-all-side{
 
@@ -269,7 +288,7 @@ header{
     padding: 0 auto;
 	background-size:cover;
 	font-family: 'Lato', sans-serif;
-	min-height: 155px;
+	min-height: 88px;
 
 }
 

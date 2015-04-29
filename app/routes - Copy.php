@@ -10,6 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+App::bind('confide.user_validator', 'UserAccountValidator');
 
 /** ------------------------------------------
  *  Dashboard Routes 
@@ -29,10 +30,6 @@ Route::group(array('before' => 'auth'), function()
 
 	Route::get("user/physician/{phyquery}","UserController@phyquery");
 	Route::post("user/physician/{phyquery}","UserController@phyquery");
-	
-	// For Physician Info
-	//Route::get("user/physician/?ajax={physician}","UserController@phyInfo");
-	//Route::post("user/physician/?ajax={physician}","UserController@phyInfo");
 	
 	Route::get("user/specialty/{specquery}","UserController@specquery");
 	Route::post("user/specialty/{specquery}","UserController@specquery");
@@ -92,7 +89,9 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::post('users/{user}/activate', 'AdminUsersController@activateUser');
 	Route::get('users/{user}/activate', 'AdminUsersController@activateUser');
 	Route::post('users/{user}/reject', 'AdminUsersController@rejectionEmail');
-    Route::get('users/{user}/reject', 'AdminUsersController@rejectionEmail');
+	Route::get('users/{user}/reject', 'AdminUsersController@rejectionEmail');
+
+	
     Route::controller('users', 'AdminUsersController');
 
     # User Role Management
@@ -119,6 +118,12 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 Route::get('user/reset/{token}', 'UserController@getReset');
 // User password reset
 Route::post('user/reset/{token}', 'UserController@postReset');
+
+// User reset routes --For Testing
+Route::get('user/reset/', 'UserController@getReset');
+// User password reset --For Testing
+Route::post('user/reset/', 'UserController@postReset');
+
 //:: User Account Routes ::
 Route::post('user/{user}/edit', 'UserController@postEdit');
 
@@ -127,6 +132,9 @@ Route::post('user/login', 'UserController@postLogin');
 
 # User RESTful Routes (Login, Logout, Register, etc)
 Route::controller('user', 'UserController');
+
+//:: User Account Routes ::
+Route::get('user/faq', 'UserController@getFaq');
 
 //:: Application Routes ::
 
@@ -140,12 +148,21 @@ Route::get('contact', function()
     return View::make('contact');
 });
 
+# Contact Us Static Page
+Route::get('thankyou', function()
+{
+    // Return Thank You Page
+    return View::make('thankyou');
+});
+
 # Posts - Second to last set, match slug
 Route::get('{postSlug}', 'BlogController@getView');
 Route::post('{postSlug}', 'BlogController@postView');
 
 # Index Page - Last route, no matches
-//Route::get('/', array('before' => 'detectLang','uses' => 'BlogController@getIndex'));
+Route::get('/', array('before' => 'detectLang','uses' => 'BlogController@getIndex'));
 
-Route::get('/', 'BlogController@getIndex');
-
+Route::get('try', function()
+{
+	return "Hi! there";
+});

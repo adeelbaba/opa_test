@@ -140,7 +140,7 @@
 
 			            default:
 			                comp.values = [company];
-							$(".table").show();
+							$(".search-record").show();
 			                break;
 			        }
 
@@ -197,7 +197,7 @@
 			//
 			function errorCallback(errorCode, description)
 			{
-					$(".table").hide();
+					$(".search-record").hide();
 					$(".alert").show();
 					// Displays an error message if something goes wrong
 					// in the Web Player.
@@ -287,7 +287,7 @@
 				<span class = "alert col-md-12 col-xs-12 error-login text-center" id="error" style="display:none; margin-top: 5px;"></span>
 			</div>
 			
-		<div class="search-record">
+		<div class="search-record" style="display: none;">
 					<div class="row" style = "background-color: white;">
 						<div class="col-md-4" style="border-right: 1px solid #bfbfbf; text-align:center; padding: 10px; margin-botton 10px;">
 						<div style="font-weight:bold;"><span class="glyphicon glyphicon-user"></span> NAME</div>
@@ -305,6 +305,51 @@
 		</div>
 		
 		<div id ="webPlayer" class="col-md-12 col-xs-12" style = "padding: 0px;"></div>
+		
+		<hr>
+		<div class="col-md-6" style = "padding: 0px;">
+			<div class="row">
+			<form class = "form-margin" method="POST" action="{{{ URL::to('user/company') }}}" accept-charset="UTF-8">
+				<input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
+					<div>
+						@if (Session::get('error'))
+							<div class="error-login text-center">
+								<p>
+									{{{ Session::get('error') }}}
+								</p>
+							</div>
+							
+						@endif
+						<div id="errorDiv" style="display:none;" class="error-login text-center">
+								
+							</div>
+					</div>
+					<br>
+				
+				<fieldset>
+
+			<div class="form-group">
+								{{ Form::label('feedback', 'Feedback*', ['class' => 'control-label']) }}
+								<input class="form-control" placeholder="Feedback" type="text" name="feedback" id="feedback">
+							</div>
+					
+					<div>
+								{{ Form::label('rating', 'Rating*', ['class' => 'control-label']) }}
+								<input type="radio" name="rating" id="rating" value="1"> 1
+								<input type="radio" name="rating" id="rating" value="2"> 2
+								<input type="radio" name="rating" id="rating" value="3"> 3
+								<input type="radio" name="rating" id="rating" value="4"> 4
+								<input type="radio" name="rating" id="rating" value="5"> 5
+					</div>
+					<div class="form-actions form-group">
+					  <button type="submit" class="btn btn-default btn-send"> <span class="glyphicon glyphicon-ok"></span> SUBMIT</button>
+					</div>
+
+				</fieldset>
+			</form>
+		</div>
+		</div>
+		
         <!-- /.row -->
 </div>
         <hr>

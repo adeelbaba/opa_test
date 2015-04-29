@@ -42,6 +42,10 @@
 				  bottom:0px;
 				  margin-bottom:0px;
 				}
+				
+		.dropdown-menu>.active>a {
+			color: #0C9DDC;
+		}
             @section('styles')
             @show
         </style>
@@ -104,10 +108,18 @@
                     @if (Auth::check())
 					<ul class="nav navbar-nav navbar-center margin-nav-ul-left head-navbar-right nav-top-mrg-sz">
 							<li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">HOME</a></li>
-							<li {{ (Request::is('user/company') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/company') }}}">COMPANY</a></li>
-							<li {{ (Request::is('user/physician') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/physician') }}}">PHYSICIAN</a></li>
-							<li {{ (Request::is('user/specialty') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/specialty') }}}">SPECIALTY</a></li>
-							<li {{ (Request::is('user/competition') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/competition') }}}">COMPETITION</a></li>
+							<li class="dropdown{{ (Request::is('user/company*|user/physician*|user/specialty*|user/competition*') ? ' active' : '') }}">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('user/company') }}}">
+									 SPEND ANALYTICS <span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu nav-top-mrg-sz">
+									<li {{ (Request::is('user/company') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/company') }}}">COMPANY</a></li>
+									<li {{ (Request::is('user/physician') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/physician') }}}">PHYSICIAN</a></li>
+									<li {{ (Request::is('user/specialty') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/specialty') }}}">SPECIALTY</a></li>
+									<li {{ (Request::is('user/competition') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/competition') }}}">COMPETITION</a></li>
+								</ul>
+							</li>
+							<li {{ (Request::is('user/faq') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/faq') }}}">FAQ</a></li>
 							<li {{ (Request::is('contact') ? ' class="active"' : '') }}><a href="{{{ URL::to('contact') }}}">CONTACT US</a></li>
 
 					</ul>
@@ -122,6 +134,7 @@
                     @else
 					<ul class="nav navbar-nav navbar-center margin-nav-ul-left head-navbar-right  nav-top-mrg-sz">
 						<li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">HOME</a></li>
+						<li {{ (Request::is('user/faq') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/faq') }}}">FAQ</a></li>
 						<li {{ (Request::is('contact') ? ' class="active"' : '') }}><a href="{{{ URL::to('contact') }}}">CONTACT US</a></li>
 					</ul>
 							
@@ -161,6 +174,7 @@
 		<div class="col-md-6 col-sm-8 col-xs-12">
 			<ul class="nav navbar-nav navbar-right foo-navbar-right nav-btm nav-cen" style="font-size: 12px;">
 		        <li><a href="{{{ URL::to('') }}}" class="nav-top-color nav-focus">HOME</a></li>
+				<li><a href="{{{ URL::to('user/faq') }}}" class="nav-top-color nav-focus">FAQ</a></li>
 		      	<li><a href="{{{ URL::to('user/create') }}}" class="nav-top-color nav-focus">REQUEST AN ACCOUNT</a></li>
 		      	<li><a href="{{{ URL::to('contact') }}}" class="nav-top-color nav-focus">CONTACT US</a></li>
 		      	

@@ -16,36 +16,59 @@
 
 {{-- Content --}}
 @section('content')
-<style>
-
-table, tr, th, td {
-	text-align: center !important;
-	table-layout: auto !important;
-    border: 0px;
-	border-top: 0px !important;
-}
-
-</style>
-
 <div class="row sub-header">
 		<div class="container">
 			<div class="col-md-12">
-			
-				<p class="p-mrg" style = "  padding: 0px;"><span class="cnt-btm">REQUEST AN ACCOUNT</span></p>
-		
+			<p>
+				<span class="cnt-btm">REQUEST AN ACCOUNT</span>
+			</p>
 			</div>
 		</div>
 </div>
 	
 	<section class="container">
 	<div class="row">
-				<div	class="col-md-12">
-					<p class="p-mrg">At this time, we are only accepting registrations from individuals within the Life Sciences industry. Please proceed with the registration process if you belong to a Pharmaceutical using your corporate email address.</p>
+		<h3 style="text-align: center;">
+			Let's Get Started
+		</h3>
+		<p style="text-align: center; padding-bottom: 5px !important; font-size: 13px;">
+			Sign up for Complimentary Access to OPA — we are only accepting registrations from individuals within the Life Sciences industry at this point.
+		</p>
+				<div>
+					<div class="row text-sec">
+						<div class="container text-center">
+							<div class="col-md-4">
+								<p class="p-mrg">
+									<span class="glyphicon glyphicon-search"></span> <b> View Open Payments Data like Never Before</b>
+								</p>
+								<p style="font-size: 14px;">
+								Gain valuable insights into Open Payments with our complimentary Company, Physician, Specialty and Competitor dashboards
+								</p>
+							</div>
+							
+							<div class="col-md-4">
+								<p class="p-mrg">
+									<span class="glyphicon glyphicon-tasks"></span> <b> Leverage the Expertise</b>
+								</p>
+								<p style="font-size: 14px;">
+								Open Payments Analytics dashboards were developed in parallel with pharma sales and marketing teams with the common goal of addressing their key requirements
+								</p>
+							</div>
+							
+							<div class="col-md-4">
+								<p class="p-mrg">
+									<span class="glyphicon glyphicon-signal"></span> <b>Optimize your HCP Interactions</b>
+								</p>
+								<p style="font-size: 14px;">
+								Be the early adopter to gain competitive advantage
+								</p>
+							</div>
+						</div>
+					</div>
 				</div>
 	</div>
-	<hr>
+	<hr style="margin-bottom: 0px;">
 	<div class="row">
-		<div class="col-md-6">
 			
 			<div class="row">
 			<form class = "form-margin" method="POST" action="{{{ URL::to('user') }}}" accept-charset="UTF-8">
@@ -67,101 +90,110 @@ table, tr, th, td {
 					<br>
 				
 				<fieldset>
-					
+					<div class="col-md-6">
 							<div class="form-group">
+							<p>
 								{{ Form::label('first_name', 'FIRST NAME*', ['class' => 'control-label']) }}
 								<input class="form-control" placeholder="First Name" type="text" name="first_name" id="first_name">
-								
+							</p>
 							</div>
 
-			<div class="form-group">
+							<div class="form-group">
 								{{ Form::label('last_name', 'LAST NAME*', ['class' => 'control-label']) }}
 								<input class="form-control" placeholder="Last Name" type="text" name="last_name" id="last_name">
 							</div>
 					
-					<div class="form-group">
+							<div class="form-group">
 								{{ Form::label('organization', 'ORGANIZATION*', ['class' => 'control-label']) }}
 								<input class="form-control" placeholder="Organization" type="text" name="organization" id="organization">
 								 
 							</div>
-					<div class="form-group">
-						 {{ Form::label('department', 'DEPARTMENT*', ['class' => 'control-label']) }}
-						 {{Form::select('selectdepartment',
-									 array(
-											'None' => '- None -', 
-											'Accounting/Finance'=>'Accounting/Finance',
-											'Professional Services'=>'Professional Services',
-											'Engineering/Development'=>'Engineering/Development',
-											'General Mgmt/Administration'=>'General Mgmt/Administration',
-											'Human Resources'=>'Human Resources',
-											'IT'=>'IT',
-											'Legal'=>'Legal',
-											'Market'=>'Marketing',
-											'Operations'=>'Operations',
-											'Channel'=>'Channel',
-											'Product Management'=>'Product Management',
-											'Purchasing/Merchandisingr'=>'Purchasing/Merchandising',
-											'Sales'=>'Sales',
-											'Science'=>'Science',
-											'Support/Service'=>'Support/Service',
-											'Other'=>'Other'
-											),null,
-									['class' => 'form-control'])}}
-					</div>
+							
+							<div class="form-group">
+								 {{ Form::label('department', 'DEPARTMENT*', ['class' => 'control-label']) }}
+								 {{Form::select('selectdepartment',
+											 array(
+													'None' => '- None -', 
+													'Accounting/Finance'=>'Accounting/Finance',
+													'Professional Services'=>'Professional Services',
+													'Engineering/Development'=>'Engineering/Development',
+													'General Mgmt/Administration'=>'General Mgmt/Administration',
+													'Human Resources'=>'Human Resources',
+													'IT'=>'IT',
+													'Legal'=>'Legal',
+													'Market'=>'Marketing',
+													'Operations'=>'Operations',
+													'Channel'=>'Channel',
+													'Product Management'=>'Product Management',
+													'Purchasing/Merchandisingr'=>'Purchasing/Merchandising',
+													'Sales'=>'Sales',
+													'Science'=>'Science',
+													'Support/Service'=>'Support/Service',
+													'Other'=>'Other'
+													),null,
+											['class' => 'form-control'])}}
+							</div>
 					
 					
-					<div class="form-group">
-						 {{ Form::label('role', 'ROLE', ['class' => 'control-label']) }}
-						 {{Form::select('selectrole',
-									 array(
-											'None' => '- None -', 
-											'CEO/President'=>'CEO/President',
-											'C-Level'=>'C-Level',
-											'VP'=>'VP',
-											'Manager'=>'Manager',
-											'Analyst'=>'Analyst',
-											'Coordinator/Specialist'=>'Coordinator/Specialist',
-											'Architect'=>'Architect',
-											'Developer/Engineer'=>'Developer/Engineer',
-											'Consultant/System Integrator'=>'Consultant/System Integrator',
-											'Professor/Teacher'=>'Professor/Teacher',
-											'Student'=>'Student',
-											'Other'=>'Other'
-											),null,
-									['class' => 'form-control'])}}
+							<div class="form-group">
+								 {{ Form::label('role', 'ROLE', ['class' => 'control-label']) }}
+								 {{Form::select('selectrole',
+											 array(
+													'None' => '- None -', 
+													'CEO/President'=>'CEO/President',
+													'C-Level'=>'C-Level',
+													'VP'=>'VP',
+													'Manager'=>'Manager',
+													'Analyst'=>'Analyst',
+													'Coordinator/Specialist'=>'Coordinator/Specialist',
+													'Architect'=>'Architect',
+													'Developer/Engineer'=>'Developer/Engineer',
+													'Consultant/System Integrator'=>'Consultant/System Integrator',
+													'Professor/Teacher'=>'Professor/Teacher',
+													'Student'=>'Student',
+													'Other'=>'Other'
+													),null,
+											['class' => 'form-control'])}}
+							</div>
 					</div>
 					
-					
-					<div class="form-group">
-						<label for="username">{{{ Lang::get('confide::confide.username') }}}*</label>
-						<input class="form-control" placeholder="{{{ Lang::get('confide::confide.username') }}}" type="text" name="username" id="username" value="{{{ Input::old('username') }}}">
+					<div class="col-md-6">
+							<div class="form-group">
+								<label for="username">{{{ Lang::get('confide::confide.username') }}}*</label>
+								<input class="form-control" placeholder="Username" type="text" name="username" id="username" value="{{{ Input::old('username') }}}">
+							</div>
+							
+							<div class="form-group">
+								<label for="email">{{{ Lang::get('confide::confide.e_mail') }}}*</label>
+								<input class="form-control" placeholder="Corporate Email Required" type="text" name="email" id="email" value="{{{ Input::old('email') }}}">
+							</div>
+							
+							<div class="form-group">
+								<label for="password">{{{ Lang::get('confide::confide.password') }}}*</label>
+								<input class="form-control" placeholder="Password" type="password" name="password" id="password">
+							</div>
+							
+							<div class="form-group">
+								<label for="password_confirmation">{{{ Lang::get('confide::confide.password_confirmation') }}}*</label>
+								<input class="form-control" placeholder="Confirm Password" type="password" name="password_confirmation" id="password_confirmation">
+							</div>
 					</div>
-					<div class="form-group">
-						<label for="email">{{{ Lang::get('confide::confide.e_mail') }}}*</label>
-						<input class="form-control" placeholder="{{{ Lang::get('confide::confide.e_mail') }}}" type="text" name="email" id="email" value="{{{ Input::old('email') }}}">
-					</div>
-					<div class="form-group">
-						<label for="password">{{{ Lang::get('confide::confide.password') }}}*</label>
-						<input class="form-control" placeholder="{{{ Lang::get('confide::confide.password') }}}" type="password" name="password" id="password">
-					</div>
-					<div class="form-group">
-						<label for="password_confirmation">{{{ Lang::get('confide::confide.password_confirmation') }}}*</label>
-						<input class="form-control" placeholder="{{{ Lang::get('confide::confide.password_confirmation') }}}" type="password" name="password_confirmation" id="password_confirmation">
-					</div>
-
-					<div class="form-actions form-group">
-					  <button type="submit" class="btn btn-default btn-send"> <span class="glyphicon glyphicon-ok"></span> {{{ Lang::get('confide::confide.signup.submit') }}}</button>
-					</div>
+				
+				<hr>
+				<small class="p-mrg" style="font-size: 11px !important; color #000">By continuing, you agree to Open Payments Analytics' Legal Agreement.<br></small><br>
+							
+				<div class="form-actions form-group">
+				  <button type="submit" class="btn btn-default btn-send"> <span class="glyphicon glyphicon-ok"></span> {{{ Lang::get('confide::confide.signup.submit') }}}</button>
+				</div>
 
 				</fieldset>
 			</form>
 			<br>
 		</div>
 	</div>
-		<div class="col-md-6">
-			<img style="padding: 90px;" src="{{{ asset('assets/img/registration.png') }}}">
-	</div>
-	</div>
 	</section>
 
+	<script>
+		adjustScreenSize();
+	</script>
 @stop

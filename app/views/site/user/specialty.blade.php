@@ -79,9 +79,11 @@
 			//
 			var c_serverUrl = "/SpotfireWeb/";
 			var c_analysisPath = "/Final_Web_Dashboards/specialty_filter";
+		//	var c_analysisPath = "/Final_Web_Dashboards/load_on_demand";
 			var c_pages = ["specialty"];
 			var c_startPage = c_pages[0];
-			var c_dataTableName = "open_payment_view";
+		var c_dataTableName = "open_payment_view";
+		//	var c_dataTableName = "Specialty_pivot";
 			var c_filteringSchemeName = "Specialty_Filter";
 			
 			//
@@ -136,12 +138,15 @@
 
 			            default:
 			                spec.values = [specialty];
-							$(".table").show();
+							$(".search-record").show();
 			                break;
 			        }
 
 					app.analysisDocument.marking.setMarking( "specialty_company", c_dataTableName, "1", spotfire.webPlayer.markingOperation.CLEAR);
 					app.analysisDocument.marking.setMarking( "specialty_time", c_dataTableName, "1", spotfire.webPlayer.markingOperation.CLEAR);
+					
+				//	app.analysisDocument.marking.setMarking( "specialty_company", "open_payments_final", "1", spotfire.webPlayer.markingOperation.CLEAR);
+				//	app.analysisDocument.marking.setMarking( "specialty_time", "open_payments_final", "1", spotfire.webPlayer.markingOperation.CLEAR);
 					
 			        app.analysisDocument.filter.setFilter(
 						c_filteringSchemeName,
@@ -190,7 +195,7 @@
 			//
 			function errorCallback(errorCode, description)
 			{
-				$(".table").hide();
+				$(".search-record").hide();
 				$(".alert").show();
 				// Displays an error message if something goes wrong
 				// in the Web Player.
@@ -281,7 +286,7 @@
 			<span class = "alert col-md-12 col-xs-12 error-login text-center" id="error" style="display:none; margin-top: 5px;"></span>
 		</div>
 			
-			<div class="search-record">
+			<div class="search-record" style="display: none;">
 					<div class="row" style = "background-color: white;">
 						<div class="col-md-4" style="padding: 10px; margin-botton 10px; margin-left: 20px;">
 							<div style="font-weight:bold;"><span><img src="{{{ asset('assets/img/searchspecialtyb.png') }}}"> </span> Specialty</div>

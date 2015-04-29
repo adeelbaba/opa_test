@@ -58,8 +58,6 @@
 		<script src="{{asset('bootstrap/js/jquery.js')}}"></script>
         <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 		<script src="{{asset('bootstrap/js/util.js')}}"></script>
-		<script src="{{asset('bootstrap/js/typeahead.js')}}"></script>
-		<script src="{{asset('bootstrap/js/bloodhound.js')}}"></script>
 
 		<!-- Google Analytics Script
 						================================================== -->
@@ -120,14 +118,15 @@
 					  </button>
 					  <a class="navbar-brand nav-top-transperent" href="{{{ URL::to('') }}}"><img id="img-logo" src="{{{ asset('assets/img/logonew.png') }}}" class="img-responsive" height="50px;"></a>
 					</div>
-				<div class="collapse navbar-collapse border-none" style="padding-bottom: 25px !important;">
+				<div class="collapse navbar-collapse border-none">
                     @if (Auth::check())
 					<ul class="nav navbar-nav navbar-center margin-nav-ul-left head-navbar-right nav-top-mrg-sz">
-							<li {{ (Request::is('/') ? ' class="active"' : '') }}><a class="nav-top-color" href="{{{ URL::to('') }}}">HOME</a></li>
+							<li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">HOME</a></li>
 							<li {{ (Request::is('user/company') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/company') }}}">COMPANY</a></li>
 							<li {{ (Request::is('user/physician') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/physician') }}}">PHYSICIAN</a></li>
 							<li {{ (Request::is('user/specialty') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/specialty') }}}">SPECIALTY</a></li>
 							<li {{ (Request::is('user/competition') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/competition') }}}">COMPETITION</a></li>
+							<li {{ (Request::is('user/faq') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/faq') }}}">FAQ</a></li>
 							<li {{ (Request::is('contact') ? ' class="active"' : '') }}><a href="{{{ URL::to('contact') }}}">CONTACT US</a></li>
 
 					</ul>
@@ -142,12 +141,13 @@
                     @else
 					<ul class="nav navbar-nav navbar-center margin-nav-ul-left head-navbar-right  nav-top-mrg-sz">
 						<li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">HOME</a></li>
+						<li {{ (Request::is('user/faq') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/faq') }}}">FAQ</a></li>
 						<li {{ (Request::is('contact') ? ' class="active"' : '') }}><a href="{{{ URL::to('contact') }}}">CONTACT US</a></li>
 					</ul>
 							
 					<ul class ="nav navbar-nav navbar-right margin-nav-uls-left head-navbar-right nav-sign-ss  nav-top-mrg-sz">
 						<li {{ (Request::is('user/create') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">REQUEST AN ACCOUNT</a></li>
-						<li class="ss" {{ (Request::is('user/login') ? ' class="active"' : '') }}><a class="sign-up-back text-center" style="color: #FFF; padding: 0px !important;   width: 75px;" href="{{{ URL::to('user/login') }}}"><span class="glyphicon glyphicon-lock"></span>LOG IN</a></li>
+						<li class="ss" {{ (Request::is('user/login') ? ' class="active"' : '') }}><a class="sign-up-back text-center" style="color: #FFF; padding: 0px !important;   width: 75px;" href="{{{ URL::to('user/login') }}}"><span class="glyphicon glyphicon-lock"></span> LOG IN</a></li>
                     </ul>
 					@endif
 					<!-- ./ nav-collapse -->
@@ -162,12 +162,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 col-xs-12 text-center">
-			
-		
-				
-			<iframe frameborder="0" width="520" class="video-radius"  style="border: 5px solid white;" height="320" src="//www.dailymotion.com/embed/video/x268hqr" allowfullscreen></iframe>
-		
-		
+					<iframe frameborder="0" width="520" class="video-radius"  style="border: 5px solid white;" height="320" src="//www.dailymotion.com/embed/video/x268hqr" allowfullscreen></iframe>
 			</div>
 		</div>
 		<div class="row">
@@ -201,15 +196,14 @@
 		<footer class="row">
 		<div class="container">	
 		<div class="col-md-6 col-sm-4 col-xs-12">
-		
-			
-				<p class="p-mrg p-cen">&copy;2015 <a href="//www.streebo.com"><span class="streebo-color">Streebo</span></a> All Rights Reserved</p>
+				<p class="p-mrg p-cen footer-top-mrg footer-txt-color">&copy;2015 <a href="//www.streebo.com" class="nav-top-color"><span class="streebo-color">Streebo</span></a> All Rights Reserved</p>
 		</div>
 		<div class="col-md-6 col-sm-8 col-xs-12">
-			<ul class="nav navbar-nav navbar-right nav-top nav-cen">
-		        <li><a href="{{{ URL::to('') }}}">ABOUT US</a></li>
-		      	<li><a href="{{{ URL::to('user/create') }}}">REQUEST AN ACCOUNT</a></li>
-		      	<li><a href="{{{ URL::to('contact') }}}">CONTACT US</a></li>
+			<ul class="nav navbar-nav navbar-right foo-navbar-right nav-btm nav-cen" style="font-size: 12px;">
+		        <li><a href="{{{ URL::to('') }}}" class="nav-top-color nav-focus">HOME</a></li>
+				<li><a href="{{{ URL::to('user/faq') }}}" class="nav-top-color nav-focus">FAQ</a></li>
+		      	<li><a href="{{{ URL::to('user/create') }}}" class="nav-top-color nav-focus">REQUEST AN ACCOUNT</a></li>
+		      	<li><a href="{{{ URL::to('contact') }}}" class="nav-top-color nav-focus">CONTACT US</a></li>
 		      	
 		    </ul>
 		</div>

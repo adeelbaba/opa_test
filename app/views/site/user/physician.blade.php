@@ -140,7 +140,7 @@
 
 			            default:
 			                phy.values = [physician];
-							$(".table").show();
+							$(".search-record").show();
 			                break;
 			        }
 
@@ -203,7 +203,7 @@
 			function errorCallback(errorCode, description)
 			{
 				$(".alert").show();
-				$(".table").hide();
+				$(".search-record").hide();
 				// Displays an error message if something goes wrong
 				// in the Web Player.
 				document.getElementById("error").innerHTML = errorCode + ": " + description;
@@ -292,7 +292,7 @@
 			<span class = "alert col-md-12 col-xs-12 error-login text-center" id="error" style="display:none; margin-top: 5px;"></span>
 		</div>
 		
-		<div class="search-record">
+		<div class="search-record" style="display: none;">
 					<div class="row" style = "background-color: white;">
 						<div class="col-md-3" style="border-right: 1px solid #bfbfbf; text-align:center; padding: 10px; margin-botton 10px;">
 							<div style="font-weight:bold;"><span class="glyphicon glyphicon-user"></span> NAME</div>

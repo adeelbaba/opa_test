@@ -26,7 +26,7 @@ Route::group(array('before' => 'auth'), function()
 	
 	
 	Route::get("user/company/{compquery}","UserController@compquery");
-	Route::post("user/company/{compquery}","UserController@compquery");
+	Route::post("user/company","UserController@postFeedback");
 
 	Route::get("user/physician/{phyquery}","UserController@phyquery");
 	Route::post("user/physician/{phyquery}","UserController@phyquery");
@@ -132,6 +132,9 @@ Route::post('user/login', 'UserController@postLogin');
 
 # User RESTful Routes (Login, Logout, Register, etc)
 Route::controller('user', 'UserController');
+
+//:: User Account Routes ::
+Route::get('user/faq', 'UserController@getFaq');
 
 //:: Application Routes ::
 

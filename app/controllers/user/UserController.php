@@ -214,6 +214,16 @@ class UserController extends BaseController {
         return View::make('site/user/forgot');
     }
 
+	
+	 /**
+     * Display FAQ Page
+     *
+     */
+	public function getFaq()
+    {
+        return View::make('site/user/faq');
+    }
+	
     /**
      * Attempt to reset password with given email
      *
@@ -339,6 +349,13 @@ class UserController extends BaseController {
         return View::make('site/user/company');
 
     }
+	
+	public function postFeedback(){;
+		//return 'You are on the Company Page';
+        return View::make('site/user/company');
+
+    }
+	
 
 	public function compquery($compquery){
 

@@ -22,10 +22,9 @@
 <div class="row sub-header">
 		<div class="container">
 		<div class="col-md-12">
-		
-			
-				<p class="p-mrg" style = "  padding: 0px;"><span class="cnt-btm">CONTACT US</span> </p>
-		
+				<h4 class="heading-left-margin">
+					<span class="cnt-btm">CONTACT US</span>
+				</h4>
 		</div>
 	</div>
 	</div>
@@ -37,7 +36,7 @@
 			<div class="form-margin">
 				<div class="row">
 				<p>
-					If you have any questions or requests concerning our service, please use this contact form to drop us a line. One of our expert Open Payments Analytics team members will contact you within 24 hours.
+					If you have any questions or requests regarding our service, or you’d like a dedicated ear, please use this contact form to drop us a line. We love our customers and love even more listening to you. You can use the form below, or choose from any of the Communication Channels on your right.
 				<p>
 				<hr>
 				<small> Fields marked with * are required. </small>
@@ -52,6 +51,7 @@
 								css:'.hs-input{width: 500px;} .input{padding-bottom: 10px;}',
 								submitButtonClass: 'btn btn-default btn-send'
 							  });
+							  adjustScreenSize();
 							</script>
 						 <br>
 				</div>
