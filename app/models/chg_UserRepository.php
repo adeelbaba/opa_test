@@ -32,6 +32,9 @@ class UserRepository
                 
                 //$user->first_name='Fahad';
                //$user->last_name ='Khan';
+		$user->first_name = array_get($input, 'first_name');
+		$user->last_name = array_get($input, 'last_name');
+		$user->organization = array_get($input, 'organization');
         $user->username = array_get($input, 'username');
 		$user->email    = array_get($input, 'email');
 		$user->password = array_get($input, 'password');              

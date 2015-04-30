@@ -24,9 +24,7 @@ Route::group(array('before' => 'auth'), function()
     Route::get("user/specialty","UserController@getSpecialty");
     Route::get("user/competition","UserController@getCompetition");
 	
-	
 	Route::get("user/company/{compquery}","UserController@compquery");
-	Route::post("user/company","UserController@postFeedback");
 
 	Route::get("user/physician/{phyquery}","UserController@phyquery");
 	Route::post("user/physician/{phyquery}","UserController@phyquery");
@@ -36,6 +34,7 @@ Route::group(array('before' => 'auth'), function()
 	
 });
 
+	Route::post("user/feedback","UserController@postFeedback");
 	Route::get('contact', 'ContactController@getContact');
 	Route::post('contact_request','ContactController@getContactUsForm');
 	
@@ -134,7 +133,11 @@ Route::post('user/login', 'UserController@postLogin');
 Route::controller('user', 'UserController');
 
 //:: User Account Routes ::
+# FAQs Page
 Route::get('user/faq', 'UserController@getFaq');
+
+# Legal Agreement Page
+Route::get('user/legal', 'UserController@getLegal');
 
 //:: Application Routes ::
 

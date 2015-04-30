@@ -5,7 +5,7 @@
 		OpenPaymentsAnalytics - Specialty Analytics
 		@stop
 		@section('meta_keywords')
-		<meta name="keywords" content="Specialty Dashboard, Specialty Analytics, Specialty Spending Insights, Specialty Open Payments Spending, Open Payments Analytics, Streebo Inc." />
+		<meta name="keywords" content="Specialty Dashboard, Specialty Analytics, Specialty Spending Insights, Specialty Open Payments Spending, Open Payments Analytics, Streebo Inc., cms, sunshine act, yments, payment sunshine act, the sunshine act, physician payments sunshine act, ysician sunshine act, open payments website, physicians payment sunshine act, federal sunshine act" />
 		@show
 		@section('meta_author')
 		<meta name="author" content="Streebo" />
@@ -79,11 +79,9 @@
 			//
 			var c_serverUrl = "/SpotfireWeb/";
 			var c_analysisPath = "/Final_Web_Dashboards/specialty_filter";
-		//	var c_analysisPath = "/Final_Web_Dashboards/load_on_demand";
 			var c_pages = ["specialty"];
 			var c_startPage = c_pages[0];
-		var c_dataTableName = "open_payment_view";
-		//	var c_dataTableName = "Specialty_pivot";
+			var c_dataTableName = "open_payment_view";
 			var c_filteringSchemeName = "Specialty_Filter";
 			
 			//
@@ -144,9 +142,7 @@
 
 					app.analysisDocument.marking.setMarking( "specialty_company", c_dataTableName, "1", spotfire.webPlayer.markingOperation.CLEAR);
 					app.analysisDocument.marking.setMarking( "specialty_time", c_dataTableName, "1", spotfire.webPlayer.markingOperation.CLEAR);
-					
-				//	app.analysisDocument.marking.setMarking( "specialty_company", "open_payments_final", "1", spotfire.webPlayer.markingOperation.CLEAR);
-				//	app.analysisDocument.marking.setMarking( "specialty_time", "open_payments_final", "1", spotfire.webPlayer.markingOperation.CLEAR);
+			
 					
 			        app.analysisDocument.filter.setFilter(
 						c_filteringSchemeName,

@@ -5,7 +5,7 @@
 		 OpenPaymentsAnalytics - Frequently Asked Questions
 		@stop
 		@section('meta_keywords')
-		<meta name="keywords" content="Frequently Asked Questions, FAQ, FAQs, Frequently Asked Questions at Open Payments Analytics, Open Payments Analytics, OPA, CMS,  Streebo Inc." />
+		<meta name="keywords" content="Frequently Asked Questions, FAQ, FAQs, Frequently Asked Questions at Open Payments Analytics, Open Payments Analytics, OPA, CMS,  Streebo Inc., cms, sunshine act, yments, payment sunshine act, the sunshine act, physician payments sunshine act, ysician sunshine act, open payments website, physicians payment sunshine act, federal sunshine act" />
 		@show
 		@section('meta_author')
 		<meta name="author" content="Streebo" />

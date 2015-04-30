@@ -29,7 +29,7 @@
 		<link rel="stylesheet" href="{{asset('bootstrap/css/autocomplete.css')}}">
 		<link rel="stylesheet" href="{{asset('bootstrap/css/style.css')}}">
 		<link rel="stylesheet" href="{{asset('bootstrap/css/strstyle.css')}}">
-		<link rel="stylesheet" href="{{asset('bootstrap/css/jquery.loading-indicator.css')}}">
+		<link rel="stylesheet" href="{{asset('bootstrap/css/jquery.feedback_me.css')}}">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400,700,900">
 
         <style>
@@ -44,7 +44,11 @@
 				}
 				
 		.dropdown-menu>.active>a {
-			color: #0C9DDC;
+			color: #0C9DDC !important;
+		}
+
+		.dropdown-menu>li>a {
+			color: #333 !important;
 		}
             @section('styles')
             @show
@@ -66,8 +70,7 @@
 		<script type="application/javascript" src="{{asset('bootstrap/js/util.js')}}"></script>
 		<script type="application/javascript" src="{{asset('bootstrap/js/typeahead.js')}}"></script>
 		<script type="application/javascript" src="{{asset('bootstrap/js/bloodhound.js')}}"></script>
-		<script type="application/javascript" src="{{asset('bootstrap/js/jquery.loading-indicator.js')}}"></script>
-		<script type="application/javascript" src="{{asset('bootstrap/js/jquery.loading-indicator.min.js')}}"></script>
+		<script type="application/javascript" src="{{asset('bootstrap/js/jquery.feedback_me.js')}}"></script>
 
 		<!-- Google Analytics Script
 						================================================== -->

@@ -224,6 +224,15 @@ class UserController extends BaseController {
         return View::make('site/user/faq');
     }
 	
+	 /**
+     * Display Legal Agreement
+     *
+     */
+	public function getLegal()
+    {
+        return View::make('site/user/legal');
+    }
+	
     /**
      * Attempt to reset password with given email
      *
@@ -352,7 +361,7 @@ class UserController extends BaseController {
 	
 	public function postFeedback(){;
 		//return 'You are on the Company Page';
-        return View::make('site/user/company');
+        return 1;
 
     }
 	
@@ -490,7 +499,7 @@ class UserController extends BaseController {
 			
 			$id = DB::table('search')->insert(['username' => $username, 'page' => $specialty, 'query' => $query]);
 			
-			$results = DB::table('specialty_combine')->select('Physician_Specialty_Level_2')->where('Physician_Specialty_Level_2', 'LIKE', '%' . $specquery . '%')->distinct('Physician_Specialty_Level_2')->orderBy('Physician_Specialty_Level_2')->take(100)->remember(60)->get();
+			$results = DB::table('specialty_combine')->select('Physician_Specialty_Level_2')->where('Physician_Specialty_Level_2', '=', $specquery)->distinct('Physician_Specialty_Level_2')->orderBy('Physician_Specialty_Level_2')->take(100)->remember(60)->get();
 			$count = 0;
 			if ($results)
 			{

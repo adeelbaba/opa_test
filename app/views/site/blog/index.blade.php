@@ -74,40 +74,16 @@
 	</div>
 
 		<div class="row text-sec">
-		<div class="container">
-		
-		<div class="col-md-12">
-			<img src="{{{ asset('assets/img/brandchange.png') }}}" class="img-responsive" style="padding-left: 40px;">
+			<div class="container">
 			
-		</div>
-		
-		</div>
-	</div>
-		<hr/>
-
-	<div class="row text-sec">
-		<div class="container text-center">
-		
-			<div class="col-md-6">
-				<img src="{{{ asset('assets/img/chart1.png') }}}" class="img-responsive">
+			<div class="col-md-12">
+				<img src="{{{ asset('assets/img/last.png') }}}" class="img-responsive" style="padding-left: 40px;">
+				
 			</div>
-
-			<div class="col-md-6">
-				<img src="{{{ asset('assets/img/chart2.png') }}}" class="img-responsive">
+			
 			</div>
-		
 		</div>
-	</div>
-
-	<div class="row text-sec">
-		<div class="container text-center">
-		
-		<div class="col-md-12">
-			<img src="{{{ asset('assets/img/chart3.png') }}}" class="img-responsive">
-		</div>
-		
-		</div>
-	</div>	
+	
 	<div class="row text-sec">
 		<div class="container text-center">
 		<div class="col-md-12">

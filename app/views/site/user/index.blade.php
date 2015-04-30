@@ -5,7 +5,7 @@
 		OpenPaymentsAnalytics - Update User Account
 		@stop
 		@section('meta_keywords')
-		<meta name="keywords" content="Update User Account, Change Password, Open Payments Analytics, Streebo Inc." />
+		<meta name="keywords" content="Update User Account, Change Password, Open Payments Analytics, Streebo Inc., cms, sunshine act, yments, payment sunshine act, the sunshine act, physician payments sunshine act, ysician sunshine act, open payments website, physicians payment sunshine act, federal sunshine act" />
 		@show
 		@section('meta_author')
 		<meta name="author" content="Streebo" />

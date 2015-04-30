@@ -5,7 +5,7 @@
 		OpenPaymentsAnalytics - Physician Analytics
 		@stop
 		@section('meta_keywords')
-		<meta name="keywords" content="Physician Dashboard, HCP Dashboard, Physician Analytics, Physician Spending Insights, HCP Open Payments Spending, Open Payments Analytics, Streebo Inc." />
+		<meta name="keywords" content="Physician Dashboard, HCP Dashboard, Physician Analytics, Physician Spending Insights, HCP Open Payments Spending, Open Payments Analytics, Streebo Inc., cms, sunshine act, yments, payment sunshine act, the sunshine act, physician payments sunshine act, ysician sunshine act, open payments website, physicians payment sunshine act, federal sunshine act" />
 		@show
 		@section('meta_author')
 		<meta name="author" content="Streebo" />
@@ -294,17 +294,17 @@
 		
 		<div class="search-record" style="display: none;">
 					<div class="row" style = "background-color: white;">
-						<div class="col-md-3" style="border-right: 1px solid #bfbfbf; text-align:center; padding: 10px; margin-botton 10px;">
+						<div class="col-md-3" style="text-align:center; padding: 10px; margin-botton 10px;">
 							<div style="font-weight:bold;"><span class="glyphicon glyphicon-user"></span> NAME</div>
 							<div id = "name" style="color:#737373;"></div>
-						</div>
-						<div class="col-md-3" style="text-align:center; padding: 10px; margin-botton 10px;">
-							<div style="font-weight:bold;"><span class="glyphicon glyphicon-record"></span> CITY</div>
-							<div id = "city" style="color:#737373;"></div>
 						</div>
 						<div class="col-md-3" style="border-right: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; text-align:center; padding: 10px; margin-botton 10px;">
 							<div style="font-weight:bold;"><span><img src="{{{ asset('assets/img/searchspecialtyb.png') }}}"> </span> SPECIALITY</div>
 							<div id = "spec" style="color:#737373;"></div>
+						</div>
+						<div class="col-md-3" style="border-right: 1px solid #bfbfbf; text-align:center; padding: 10px; margin-botton 10px;">
+							<div style="font-weight:bold;"><span class="glyphicon glyphicon-record"></span> CITY</div>
+							<div id = "city" style="color:#737373;"></div>
 						</div>
 						<div class="col-md-3" style="text-align:center; padding: 10px; margin-botton 10px;">
 							<div style="font-weight:bold;"> <span class="glyphicon glyphicon-map-marker"></span> STATE</div>

@@ -5,7 +5,7 @@
 		 OpenPaymentsAnalytics - Request an Account
 		@stop
 		@section('meta_keywords')
-		<meta name="keywords" content="Request an Account, Sign up at Open Payments Analytics, Register at Open Payments Analytics, Open Payments Analytics, OPA, CMS,  Streebo Inc." />
+		<meta name="keywords" content="Request an Account, Sign up at Open Payments Analytics, Register at Open Payments Analytics, Open Payments Analytics, OPA, CMS,  Streebo Inc., cms, sunshine act, yments, payment sunshine act, the sunshine act, physician payments sunshine act, ysician sunshine act, open payments website, physicians payment sunshine act, federal sunshine act" />
 		@show
 		@section('meta_author')
 		<meta name="author" content="Streebo" />
@@ -73,7 +73,6 @@
 			<div class="row">
 			<form class = "form-margin" method="POST" action="{{{ URL::to('user') }}}" accept-charset="UTF-8">
 				<input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
-				<small> Fields marked with * are Required</small>
 					<div>
 						@if (Session::get('error'))
 							<div class="error-login text-center">
@@ -94,18 +93,18 @@
 							<div class="form-group">
 							<p>
 								{{ Form::label('first_name', 'FIRST NAME*', ['class' => 'control-label']) }}
-								<input class="form-control" placeholder="First Name" type="text" name="first_name" id="first_name">
+								{{ Form:: text ('first_name', Input::old('first_name'), array('placeholder' => 'First Name', 'class' => 'form-control'))}}
 							</p>
 							</div>
 
 							<div class="form-group">
 								{{ Form::label('last_name', 'LAST NAME*', ['class' => 'control-label']) }}
-								<input class="form-control" placeholder="Last Name" type="text" name="last_name" id="last_name">
+								{{ Form:: text ('last_name', Input::old('last_name'), array('placeholder' => 'Last Name', 'class' => 'form-control'))}}
 							</div>
 					
 							<div class="form-group">
 								{{ Form::label('organization', 'ORGANIZATION*', ['class' => 'control-label']) }}
-								<input class="form-control" placeholder="Organization" type="text" name="organization" id="organization">
+								{{ Form:: text ('organization', Input::old('organization'), array('placeholder' => 'Organization', 'class' => 'form-control'))}}
 								 
 							</div>
 							
@@ -178,14 +177,14 @@
 								<input class="form-control" placeholder="Confirm Password" type="password" name="password_confirmation" id="password_confirmation">
 							</div>
 					</div>
-				
-				<hr>
-				<small class="p-mrg" style="font-size: 11px !important; color #000">By continuing, you agree to Open Payments Analytics' Legal Agreement.<br></small><br>
-							
-				<div class="form-actions form-group">
-				  <button type="submit" class="btn btn-default btn-send"> <span class="glyphicon glyphicon-ok"></span> {{{ Lang::get('confide::confide.signup.submit') }}}</button>
+				<div class="col-md-12" style = "text-align: center;">
+					<hr>
+					<small class="p-mrg" style="font-size: 11px !important; color #000">By continuing, you agree to <a href="{{{ URL::to('user/legal') }}}" target="_blank">Open Payments Analytics' Legal Agreement</a>.<br></small>
+					<small class="p-mrg" style="font-size: 11px !important; color #000">** At this time we are only accepting account requests from individuals within life sciences industry<br></small><br>
+					<div class="form-actions form-group">
+					  <button type="submit" class="btn btn-default btn-send"> <span class="glyphicon glyphicon-ok"></span> {{{ Lang::get('confide::confide.signup.submit') }}}</button>
+					</div>
 				</div>
-
 				</fieldset>
 			</form>
 			<br>
