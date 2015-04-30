@@ -178,7 +178,10 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12 col-xs-12 text-center">
-					<iframe frameborder="0" width="520" class="video-radius"  style="border: 5px solid white;" height="320" src="https://www.youtube.com/embed/mo9cJqMmBfY" allowfullscreen></iframe>
+					<!--<iframe frameborder="0" width="520" class="video-radius"  style="border: 5px solid white;" height="320" src="https://www.youtube.com/embed/mo9cJqMmBfY" allowfullscreen></iframe>-->
+					<iframe frameborder="0" width="520" class="video-radius"  style="border: 5px solid white;" height="320" src="https://www.youtube.com/embed/mo9cJqMmBfY?rel=0" allowfullscreen></iframe>
+
+
 			</div>
 		</div>
 		<div class="row">
