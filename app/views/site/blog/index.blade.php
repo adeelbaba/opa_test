@@ -20,10 +20,10 @@
 				The Centers of Medicare & Medicaid Services (CMS), released the first batch of Open Payments data on September 30, 2014. The data covers payments from the period of August 2013 to December 2013, providing a detailed account of the pharmaceutical industry’s financial interactions with physicians and teaching hospitals. Though the data is limited at this point, it still provides interesting insights for all relevant parties including pharmaceutical compliance teams, sales teams, as well as physicians.
 				</p> 
 				<p class="p-mrg">
-				Open Payments Analytics is an analytics engine that allows pharmaceutical sales and brand teams to drill down this data-set, gain valuable and interesting insight into competitor interactions, and as a result, optimize the salesforce effectiveness.
+				Open Payments Analytics is an analytics engine that allows pharmaceutical sales and brand teams to drill down this data-set, gain valuable and interesting insight into competitor interactions, and as a result, optimize salesforce effectiveness.
 				</p> 
 				<p class="p-mrg">
-				<a href="{{{ URL::to('user/create') }}}">REQUEST AN ACCOUNT</a> to gain complementary access to common sense dashboards for exploring this data set. Access is limited to professionals from pharmaceutical industry.
+				<a href="{{{ URL::to('user/create') }}}">REQUEST AN ACCOUNT</a> to gain complementary access to comprehensive dashboards for exploring this data set. Access is limited to professionals from pharmaceutical industry.
 				</p>
 				<p class="p-mrg">
 				If you like what you see, <a href="{{{ URL::to('contact') }}}">GET IN TOUCH</a> with our team to discuss how Streebo can help your organization use Open Payments data.
