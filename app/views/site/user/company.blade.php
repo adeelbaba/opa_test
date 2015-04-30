@@ -309,22 +309,22 @@
 		<hr>
 		<div class="col-md-6" style = "padding: 0px;">
 			<div class="row">
-			<form class = "form-margin" method="POST" action="{{{ URL::to('user/company') }}}" accept-charset="UTF-8">
-				<input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
-					<div>
-						@if (Session::get('error'))
-							<div class="error-login text-center">
-								<p>
-									{{{ Session::get('error') }}}
-								</p>
-							</div>
-							
-						@endif
-						<div id="errorDiv" style="display:none;" class="error-login text-center">
+			    <form class = "form-margin" method="POST" action="{{{ URL::to('user/company') }}}" accept-charset="UTF-8">
+				    <input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
+					    <div>
+						    @if (Session::get('error'))
+                                <div class="error-login text-center">
+                                    <p>
+                                        {{{ Session::get('error') }}}
+                                    </p>
+                                </div>
+
+						    @endif
+						    <div id="errorDiv" style="display:none;" class="error-login text-center">
 								
-							</div>
-					</div>
-					<br>
+						    </div>
+					    </div>
+
             <!--
                 <fieldset>
 
@@ -347,8 +347,8 @@
 
 				</fieldset>
             -->
-			</form>
-		</div>
+			    </form>
+		    </div>
 		</div>
 		
         <!-- /.row -->
