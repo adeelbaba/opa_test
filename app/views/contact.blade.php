@@ -36,7 +36,9 @@
 			<div class="form-margin">
 				<div class="row">
 				<p>
-					If you have any questions or requests regarding our service, or you’d like a dedicated ear, please use this contact form to drop us a line. We love our customers and love even more listening to you. You can use the form below, or choose from any of the Communication Channels on your right.
+                    If you have any questions or requests regarding our service, or you simply want a dedicated ear, please drop us a line and we’ll get back to you with a personalized response. You can use the form below or write to us on any of our social channels to your right.
+
+                    We love hearing from you!
 				<p>
 				<hr>
 				<small> Fields marked with * are required. </small>
