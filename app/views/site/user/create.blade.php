@@ -31,9 +31,9 @@
 		<h3 style="text-align: center;">
 			Let's Get Started
 		</h3>
-		<p style="text-align: center; padding-bottom: 5px !important; font-size: 13px;">
+		<!--<p style="text-align: center; padding-bottom: 5px !important; font-size: 13px;">
 			Sign up for Complimentary Access to OPA — we are only accepting registrations from individuals within the Life Sciences industry at this point.
-		</p>
+		</p>-->
 				<div>
 					<div class="row text-sec">
 						<div class="container text-center">

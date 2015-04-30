@@ -325,27 +325,28 @@
 							</div>
 					</div>
 					<br>
-				
-				<fieldset>
+            <!--
+                <fieldset>
 
-			<div class="form-group">
-								{{ Form::label('feedback', 'Feedback*', ['class' => 'control-label']) }}
-								<input class="form-control" placeholder="Feedback" type="text" name="feedback" id="feedback">
-							</div>
+                    <div class="form-group">
+                            {{ Form::label('feedback', 'Feedback*', ['class' => 'control-label']) }}
+                            <input class="form-control" placeholder="Feedback" type="text" name="feedback" id="feedback">
+                    </div>
 					
 					<div>
-								{{ Form::label('rating', 'Rating*', ['class' => 'control-label']) }}
-								<input type="radio" name="rating" id="rating" value="1"> 1
-								<input type="radio" name="rating" id="rating" value="2"> 2
-								<input type="radio" name="rating" id="rating" value="3"> 3
-								<input type="radio" name="rating" id="rating" value="4"> 4
-								<input type="radio" name="rating" id="rating" value="5"> 5
+                            {{ Form::label('rating', 'Rating*', ['class' => 'control-label']) }}
+                            <input type="radio" name="rating" id="rating" value="1"> 1
+                            <input type="radio" name="rating" id="rating" value="2"> 2
+                            <input type="radio" name="rating" id="rating" value="3"> 3
+                            <input type="radio" name="rating" id="rating" value="4"> 4
+                            <input type="radio" name="rating" id="rating" value="5"> 5
 					</div>
 					<div class="form-actions form-group">
-					  <button type="submit" class="btn btn-default btn-send"> <span class="glyphicon glyphicon-ok"></span> SUBMIT</button>
+					        <button type="submit" class="btn btn-default btn-send"> <span class="glyphicon glyphicon-ok"></span> SUBMIT</button>
 					</div>
 
 				</fieldset>
+            -->
 			</form>
 		</div>
 		</div>
