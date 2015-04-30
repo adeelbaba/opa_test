@@ -38,7 +38,7 @@
 				<p>
                     If you have any questions or requests regarding our service, or you simply want a dedicated ear, please drop us a line and we’ll get back to you with a personalized response. You can use the form below or write to us on any of our social channels to your right.
 
-                    <br>We love hearing from you!
+                    <br><br>We love hearing from you!
 				<p>
 				<hr>
 				<small> Fields marked with * are required. </small>
