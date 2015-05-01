@@ -4,6 +4,7 @@
 		<!-- Basic Page Needs
 		================================================== -->
 		<meta charset="utf-8" />
+        <meta name="google-site-verification" content="Cson7bl-c3YgnKI7cc6uq2fvouXnVRGEPkooqN1Qxvo" />
 		<title>
 			@section('title')
 			Open Payments Analytics: Insights into CMS Open Payments Data
