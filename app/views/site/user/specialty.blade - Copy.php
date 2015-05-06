@@ -2,16 +2,16 @@
 
 {{-- Web site Title --}}
 		@section('title')
-		OpenPaymentsAnalytics - Physician Analytics
+		OpenPaymentsAnalytics - Specialty Analytics
 		@stop
 		@section('meta_keywords')
-		<meta name="keywords" content="Physician Dashboard, HCP Dashboard, Physician Analytics, Physician Spending Insights, HCP Open Payments Spending, Open Payments Analytics, Streebo Inc., cms, sunshine act, yments, payment sunshine act, the sunshine act, physician payments sunshine act, ysician sunshine act, open payments website, physicians payment sunshine act, federal sunshine act" />
+		<meta name="keywords" content="Specialty Dashboard, Specialty Analytics, Specialty Spending Insights, Specialty Open Payments Spending, Open Payments Analytics, Streebo Inc., cms, sunshine act, yments, payment sunshine act, the sunshine act, physician payments sunshine act, ysician sunshine act, open payments website, physicians payment sunshine act, federal sunshine act" />
 		@show
 		@section('meta_author')
 		<meta name="author" content="Streebo" />
 		@show
 		@section('meta_description')
-		<meta name="description" content="Search for a physician, hcp and gain insights into the hcp spending pattern from open payments data" />
+		<meta name="description" content="Search for a specialty and gain insights into open payments spending on a specialty" />
         @show
 
 {{-- New Laravel 4 Feature in use --}}
@@ -24,23 +24,24 @@
 
 {{-- Content --}}
 @section('content')
-<script type="text/javascript">
 
+    <script type="text/javascript">
+		
 				var enterCounter = 0;
-				
+		
 				$(document).ready(function() {
-				//Set up "Bloodhound" Options 
+        //Set up "Bloodhound" Options 
                 var my_Suggestion_class = new Bloodhound({
                     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('keyword'),
                     queryTokenizer: Bloodhound.tokenizers.whitespace,
                     remote: {
-                        url: "{{ URL::to('user/physician/%phyquery') }}",
+                        url: "{{ URL::to('user/specialty/%specquery') }}",
                         filter: function(x) {
                             return $.map(x, function(item) {
                                 return {keyword: item['name']};
                             });
                         },
-                        wildcard: "%phyquery"
+                        wildcard: "%specquery"
 					}
                 });
 
@@ -62,8 +63,8 @@
 						  empty: 'No Results'
 						}
                 }).on("typeahead:selected typeahead:autocompleted", function(ev, my_Suggestion_class) {
-					$("#go").prop("disabled", false);
-					enterCounter = 0;
+						$("#go").prop("disabled", false);
+						enterCounter = 0;
 						$(document).keypress(function(e) {
 							   var code = e.keyCode || e.which;
 							   if(code == 13) {
@@ -73,10 +74,9 @@
 								   }
 							  }
 							});
-				});
-			});
+					});
+            });
 		
-	
 			// If you run the this file on another web server than the Web Player server, 
 			// you need to change this property. See Web Player JavaScript Demo setup documentation.
 			//document.domain = "10.0.102.77";
@@ -85,11 +85,11 @@
 			// Constants
 			//
 			var c_serverUrl = "/SpotfireWeb/";
-			var c_analysisPath = "/Final_Web_Dashboards/physician_filter";
-			var c_pages = ["physician"];
+			var c_analysisPath = "/Final_Web_Dashboards/specialty_filter";
+			var c_pages = ["specialty"];
 			var c_startPage = c_pages[0];
 			var c_dataTableName = "open_payment_view";
-			var c_filteringSchemeName = "Physician_Filter";
+			var c_filteringSchemeName = "Specialty_Filter";
 			
 			//
 			// Fields
@@ -98,94 +98,89 @@
 			var customization = new spotfire.webPlayer.Customization();
 			var app;
 			var analysisLoaded = false;
-			var count = 0;
-			
-			function setPhysician() {
+			var count=0;
 
+			function setSpecialty() {
+			    // Filters to the selected region and fills the Sales Repo combobox
+			    // with values corresponding to the selected region.
 				$(".alert").hide();
 
-			    var physician;
-
-				@if(Session::has('physician'))
+			    var specialty;
+				
+				@if(Session::has('specialty'))
 				{
 					if(count == 0)
 						{
-							physician = "{{ Session::get('physician') }}";
-							document.getElementById("keyword").value=physician;
+							specialty = "{{ Session::get('specialty') }}";
+							document.getElementById("keyword").value=specialty;
 							count ++;
 						}
 					else
 						{
-							physician = document.getElementById("keyword").value;
+							specialty = document.getElementById("keyword").value;
 						}
 				}
 			    @else
 				{
 					if(count == 0)
 						{
-							physician = "(All)";
+							specialty = "(All)";
 							count ++;
 						}
 					else
 						{
-							physician = document.getElementById("keyword").value;
+							specialty = document.getElementById("keyword").value;
 						}
 				}						
 				@endif
+	
+				while(specialty.charAt(0) == (" ") ){specialty = specialty.substring(1);}
+				 while(specialty.charAt(specialty.length-1) ==" " ){specialty = specialty.substring(0,specialty.length-1);}
+	
+			    var spec = new spotfire.webPlayer.FilterSettings();
 				
-				// Remove excess whitespaces.
-				 while(physician.charAt(0) == (" ") ){physician = physician.substring(1);}
-				  while(physician.charAt(physician.length-1) ==" " ){physician = physician.substring(0,physician.length-1);}
-				 
-							 
-				//Update Analysis
-				  		
-			    var phy = new spotfire.webPlayer.FilterSettings();
-
-				if ( physician == 'All')
+				if ( specialty == 'All')
 				{
-					physician = '(All)';
+					specialty = '(All)';
 				}
 				
-			    if (!isNullOrEmpty(physician)) {
-			        switch (physician) {
+			    if (!isNullOrEmpty(specialty)) {
+			        switch (specialty) {
 			            case '(All)':
-			                phy.operation = spotfire.webPlayer.filteringOperation.ADDALL;
+			                spec.operation = spotfire.webPlayer.filteringOperation.ADDALL;
 							$(".search-record").hide();
 			                break;
 
 			            case '(None)':
-			                phy.operation = spotfire.webPlayer.filteringOperation.REMOVEALL;
+			                spec.operation = spotfire.webPlayer.filteringOperation.REMOVEALL;
 			                break;
 
 			            default:
-			                phy.values = [physician];
+			                spec.values = [specialty];
 							$(".search-record").show();
 			                break;
 			        }
 
-					app.analysisDocument.marking.setMarking( "physician_pie", c_dataTableName, "1", spotfire.webPlayer.markingOperation.CLEAR);
-					app.analysisDocument.marking.setMarking( "physician_time", c_dataTableName, "1", spotfire.webPlayer.markingOperation.CLEAR);
+					app.analysisDocument.marking.setMarking( "specialty_company", c_dataTableName, "1", spotfire.webPlayer.markingOperation.CLEAR);
+					app.analysisDocument.marking.setMarking( "specialty_time", c_dataTableName, "1", spotfire.webPlayer.markingOperation.CLEAR);
+			
 					
 			        app.analysisDocument.filter.setFilter(
 						c_filteringSchemeName,
 						c_dataTableName,
-						"FullName",
-						phy);
+						"Physician_Specialty_Level2",
+						spec);
 			    }
 				
-				//Update Physician Information
+				//Update Speciality Information
 					var xmlhttp; 
 					var obj;					
 					
-					physician +="1";
+					specialty +="1";
 					
-					if (physician=="1")
+					if (specialty=="1")
 					  {
-						document.getElementById("PInfo").innerHTML = "";
-						document.getElementById("spec").innerHTML = "";
-						document.getElementById("city").innerHTML = "";
-						document.getElementById("state").innerHTML = "";
+						document.getElementById("specialty").innerHTML="";
 					  return;
 					  }
 					if (window.XMLHttpRequest)
@@ -201,31 +196,29 @@
 					  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 						{
 							obj = JSON.parse(xmlhttp.responseText);
-							document.getElementById("name").innerHTML = obj[0].name;
-							document.getElementById("spec").innerHTML = obj[0].spec;
-							document.getElementById("city").innerHTML = obj[0].city;
-							document.getElementById("state").innerHTML = obj[0].state;
+							document.getElementById("specialty").innerHTML = obj[0].name;
 						}
 					 }
 
-					xmlhttp.open("GET","physician/"+physician,true);
+					xmlhttp.open("GET","specialty/"+specialty,true);
 					xmlhttp.send();
 					
-					physician = physician.substring(0,physician.length-1);
+					specialty = specialty.substring(0,specialty.length-1);
 					$("#go").prop("disabled", true);
 					enterCounter = 1;
-				}
-				
+			}
 
+      
 			//
 			// Web Player Callbacks
 			//
 			function errorCallback(errorCode, description)
 			{
-				$(".alert").show();
 				$(".search-record").hide();
+				$(".alert").show();
 				// Displays an error message if something goes wrong
 				// in the Web Player.
+				//alert(errorCode + ": " + description);
 				document.getElementById("error").innerHTML = errorCode + ": " + description;
 			}
 			
@@ -245,7 +238,7 @@
 				});
 				
 				analysisDocument.setActivePage(c_startPage);
-				setPhysician();
+				setSpecialty();
 			}
 
 			//
@@ -255,7 +248,7 @@
 			{
 			    // Initialize all visual components when the page loads.
 			    window.onresize();
-				
+
 			    // Disable comboboxes until analysis is loaded.
 			    document.getElementById("keyword").disabled = true;
 				
@@ -294,8 +287,8 @@
 			}
 			
 		</script>
-		
-		<div class="modal fade" id="myModal" style="display: none;height: 100%;margin: auto;">
+	
+	<div class="modal fade" id="myModal" style="display: none;height: 100%;margin: auto;">
 		  <div class="modal-dialog" style="width: 650px; margin: auto;">
 			<div class="modal-content">
 			  <div class="modal-header" style="background-color: #55ccff;border-top-left-radius:5px;border-top-right-radius:5px;">
@@ -306,44 +299,47 @@
 				<p><b>Filter and Search</b></p><br>
 					<ol>
 						<li>	Type in your search query in the text / search box</li>
-						<li>	A list of Physicians matching your query would appear</li>
-						<li>	Select the required Physician's name from the list</li>
+						<li>	A list of Specialties matching your query would appear</li>
+						<li>	Select the desired Specialty from the list</li>
 						<li>	Press Enter or click on the Search button</li>
 					</ol>
 					<div class="text-center">
-						<img src="{{asset('assets/img/searchphy.png')}}">
+						<img src="{{asset('assets/img/searchspec.png')}}">
 					</div><br>
 					<p><b>Trivia</b></p><br>
-					<p>Physician Dashboard use Identified General & Research payments data as published on December 19, 2014.</p><br>
-					<p><b>Did you know</b> that you can click on any pie on the Company Spend and the rest of the visualizations will update accordingly.</p><br>
-					<p><b>Did you know</b> that you could also filter according to Month or Year.</p>
+					<p>Specialty Dashboard use Identified General & Research payments data as published on December 19, 2014.</p><br>
+					<p><b>Did you know</b> that you could also filter according to Month or Year.</p><br>
+					<p><b>Did you know</b> that you could also filter the number of top physicians or top companies shown.</p>
 			  </div>
 			</div><!-- /.modal-content -->
 		  </div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
-		
-<div class="container">
-
-		<div class="sub-header">
+	
+<div class="sub-header">
 			<div class="container">
 				<div class="row">
 				
 					<div class="col-md-12 heading">
-						<p><b>SPEND ANALYTICS &gt; </b><span class="cnt-btm"  style="font-size: 14px;"> PHYSICIAN ANALYSIS</span></p>
+						<p><b>SPEND ANALYTICS &gt; </b><span class="cnt-btm" style="font-size: 14px;"> SPECIALTY ANALYSIS</span></p>
 					</div>
 				</div>
 			</div>
-		</div>
+</div>	
+
+	
+		<div class="container">
+
         <br>
 
-		<div class="iner-sub-header" style="border-bottom: 1px solid #ccc;">
+        		<div class="iner-sub-header" style="border-bottom: 1px solid #ccc;">
 				<div class="row" style = "background-color: white;">
 					<div class="col-md-12 heading">
 						<div id = "results" class="col-md-12 col-xs-12 results">
 							<span class="glyphicon glyphicon-search span-search" aria-hidden="true"></span>
-							<input type="search" class="typeahead custom-input-padding" placeholder="Search Physician" id="keyword" onselect="setPhysician();">
-							<button class="btn go-btn" id="go" onclick="setPhysician()" disabled="true">SEARCH</button>
-							<button class="btn go-btn" id="help" type="button" onclick="help()">HELP?</button>
+							<input type="search" class="typeahead custom-input-padding" placeholder="Search Specialty" id="keyword" onselect="setSpecialty();">
+							<button class="btn go-btn" id="go" onclick="setSpecialty()" disabled="true">SEARCH</button>
+							<button class="btn go-btn" data-toggle="chardinjs" data-intro="This button toggles the overlay, you can click it, even when the overlay is visible" data-position="left" id="help" type="button">HELP?</button>
+
 						</div>
 					</div>
 				</div>
@@ -352,31 +348,21 @@
 		<div>
 			<span class = "alert col-md-12 col-xs-12 error-login text-center" id="error" style="display:none; margin-top: 5px;"></span>
 		</div>
-		
-		<div class="search-record" style="display: none;">
+			
+			<div class="search-record" style="display: none;">
 					<div class="row" style = "background-color: white;">
-						<div class="col-md-3" style="text-align:center; padding: 10px; margin-botton 10px;">
-							<div style="font-weight:bold;"><span class="glyphicon glyphicon-user"></span> NAME</div>
-							<div id = "name" style="color:#737373;"></div>
-						</div>
-						<div class="col-md-3" style="border-right: 1px solid #bfbfbf; border-left: 1px solid #bfbfbf; text-align:center; padding: 10px; margin-botton 10px;">
-							<div style="font-weight:bold;"><span><img src="{{{ asset('assets/img/searchspecialtyb.png') }}}"> </span> SPECIALITY</div>
-							<div id = "spec" style="color:#737373;"></div>
-						</div>
-						<div class="col-md-3" style="border-right: 1px solid #bfbfbf; text-align:center; padding: 10px; margin-botton 10px;">
-							<div style="font-weight:bold;"><span class="glyphicon glyphicon-record"></span> CITY</div>
-							<div id = "city" style="color:#737373;"></div>
-						</div>
-						<div class="col-md-3" style="text-align:center; padding: 10px; margin-botton 10px;">
-							<div style="font-weight:bold;"> <span class="glyphicon glyphicon-map-marker"></span> STATE</div>
-							<div id = "state" style="color:#737373;"></div>
+						<div class="col-md-4" style="padding: 10px; margin-botton 10px; margin-left: 20px;">
+							<div style="font-weight:bold;"><span><img src="{{{ asset('assets/img/searchspecialtyb.png') }}}"> </span> Specialty</div>
+							<div id = "specialty" style="color:#737373;"></div>
 						</div>
 					</div>
-		</div>
+			</div>
+		
+		
+		<div id ="webPlayer" class="col-md-12 col-xs-12" style = "padding: 0px;"></div>
+            <!-- Blog Sidebar Widgets Column -->
 
-        <div id ="webPlayer" class="col-md-12 col-xs-12" style = "padding: 0px;"></div>
-
-</div>
-        <!-- /.row -->
-@include('feedback')
+        </div>
+        <!-- /.row -->	
+@include('feedback') 
 @stop

@@ -38,6 +38,10 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('contact', 'ContactController@getContact');
 	Route::post('contact_request','ContactController@getContactUsForm');
 	
+	Route::get('feedback', 'FeedbackRatingController@getFeedback');
+	Route::post('postfeedback', 'FeedbackRatingController@postFeedback');
+	Route::get('rating', 'FeedbackRatingController@getRating');
+	Route::post('postfeedback', 'FeedbackRatingController@postRating');
 /** ------------------------------------------
  *  Route model binding
  *  ------------------------------------------

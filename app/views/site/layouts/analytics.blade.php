@@ -30,8 +30,9 @@
 		<link rel="stylesheet" href="{{asset('bootstrap/css/style.css')}}">
 		<link rel="stylesheet" href="{{asset('bootstrap/css/strstyle.css')}}">
 		<link rel="stylesheet" href="{{asset('bootstrap/css/jquery.feedback_me.css')}}">
+		<link rel="stylesheet" href="{{asset('bootstrap/css/chardinjs.css')}}">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:400,700,900">
-
+		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <style>
 		
 		footer{
@@ -70,6 +71,7 @@
 		<script type="application/javascript" src="{{asset('bootstrap/js/util.js')}}"></script>
 		<script type="application/javascript" src="{{asset('bootstrap/js/typeahead.js')}}"></script>
 		<script type="application/javascript" src="{{asset('bootstrap/js/bloodhound.js')}}"></script>
+		<script type="application/javascript" src="{{asset('bootstrap/js/chardinjs.min.js')}}"></script>
 		<script type="application/javascript" src="{{asset('bootstrap/js/jquery.feedback_me.js')}}"></script>
 
 		<!-- Google Analytics Script
@@ -83,6 +85,7 @@
 
 		ga('create', 'UA-61200678-1', 'auto');
 		ga('send', 'pageview');
+		
 		</script>
 		
 		@yield('scripts')
@@ -111,8 +114,8 @@
                     @if (Auth::check())
 					<ul class="nav navbar-nav navbar-center margin-nav-ul-left head-navbar-right nav-top-mrg-sz">
 							<li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">HOME</a></li>
-							<li class="dropdown{{ (Request::is('user/company*|user/physician*|user/specialty*|user/competition*') ? ' active' : '') }}">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('user/company') }}}">
+							<li class="dropdown active">
+								<a class="dropdown-toggle active" data-toggle="dropdown" href="{{{ URL::to('user/company') }}}">
 									 SPEND ANALYTICS <span class="caret"></span>
 								</a>
 								<ul class="dropdown-menu nav-top-mrg-sz">
@@ -131,7 +134,7 @@
 							@if (Auth::user()->hasRole('admin'))
 								<li><a href="{{{ URL::to('admin') }}}">ADMIN PANEL</a></li>
 							@endif
-							<li><a href="{{{ URL::to('user') }}}">LOGGED IN AS {{{ Auth::user()->username }}}</a></li>
+							<li {{ (Request::is('user') ? ' class="active"' : '') }}><a href="{{{ URL::to('user') }}}">LOGGED IN AS {{{ Auth::user()->username }}}</a></li>
 							<li><a href="{{{ URL::to('user/logout') }}}">LOGOUT</a></li>
 					</ul>
                     @else
@@ -153,6 +156,7 @@
 		</header>
 		
 		</div>
+
     <!-- Container -->
     <div class="container container-adjustment">
         <!-- Notifications -->

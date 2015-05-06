@@ -59,6 +59,7 @@
 		
 		<!-- Javascripts
 		================================================== -->
+		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="{{asset('bootstrap/js/jquery.js')}}"></script>
         <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
@@ -88,12 +89,15 @@
                 $("a").addClass("nav-top-color");
                 $("a").removeClass("nav-top-transperent");
                 $("ul").removeClass("nav-top li a");
+				$(".active-white").addClass("active-black");
 
             } else {
                 header.removeClass("fade-background").addClass('fade-transparent');
                 $("#img-logo").attr('src','{{{ asset('assets/img/logonew.png') }}}');
                 $("a").addClass("nav-top-transperent");
                 $("a").removeClass("nav-top-color");
+				$(".active-black").addClass("active-white");
+				$(".active-black").removeClass("active-black");
             }
 			});
 		});

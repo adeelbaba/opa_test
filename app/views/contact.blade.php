@@ -41,7 +41,7 @@
 				<hr>
 				<small> Fields marked with * are required. </small>
 				</div>
-			<div class="row">
+			<div class="row" style="height: 500px;">
 						<!-- Blade Template engine -->
 							<script charset="utf-8" src="//js.hsforms.net/forms/current.js"></script>
 							<script>
@@ -51,8 +51,12 @@
 								css:'.hs-input{width: 500px;} .input{padding-bottom: 10px;}',
 								submitButtonClass: 'btn btn-default btn-send'
 							  });
-							  adjustScreenSize();
+							  
+							  $(window).bind("load", function() {
+								   adjustScreenSize();
+								});
 							</script>
+							<hr>
 						 <br>
 				</div>
 			</div>

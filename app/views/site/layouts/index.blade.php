@@ -41,7 +41,7 @@
 		  width: 100%;
 		}
 		
-		.dropdown-menu>.active>a {
+		.dropdown-menu>.active-white>a {
 			color: #0C9DDC !important;
 		}
 
@@ -86,20 +86,23 @@
         var header = $(".fade-transparent");
       
         $(window).scroll(function() {
-            var scroll = $(window).scrollTop();
+            var scroll = $(document).scrollTop();
 
-            if (scroll >= 200) {
+            if (scroll >= 100) {
                 header.removeClass('fade-transparent').addClass("fade-background");
                 $("#img-logo").attr('src','{{{ asset('assets/img/logonewchange.png') }}}');
                 $("a").addClass("nav-top-color");
                 $("a").removeClass("nav-top-transperent");
                 $("ul").removeClass("nav-top li a");
+				$(".active-white").addClass("active-black");
 
             } else {
                 header.removeClass("fade-background").addClass('fade-transparent');
                 $("#img-logo").attr('src','{{{ asset('assets/img/logonew.png') }}}');
                 $("a").addClass("nav-top-transperent");
                 $("a").removeClass("nav-top-color");
+				$(".active-black").addClass("active-white");
+				$(".active-black").removeClass("active-black");
             }
 			});
 		});
@@ -131,20 +134,20 @@
 				<div class="collapse navbar-collapse border-none text-center">
                     @if (Auth::check())
 					<ul class="nav navbar-nav navbar-center margin-nav-ul-left head-navbar-right nav-top-mrg-sz text-center" style="text-align: center;">
-							<li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">HOME</a></li>
-							<li class="dropdown{{ (Request::is('user/company*|user/physician*|user/specialty*|user/competition*') ? ' active' : '') }}">
+							<li {{ (Request::is('/') ? ' class="active-white"' : '') }}><a href="{{{ URL::to('') }}}">HOME</a></li>
+							<li class="dropdown{{ (Request::is('user/company*|user/physician*|user/specialty*|user/competition*') ? ' active-white' : '') }}">
 								<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('user/company') }}}">
 									 SPEND ANALYTICS <span class="caret"></span>
 								</a>
 								<ul class="dropdown-menu nav-top-mrg-sz">
-									<li {{ (Request::is('user/company') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/company') }}}">COMPANY</a></li>
-									<li {{ (Request::is('user/physician') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/physician') }}}">PHYSICIAN</a></li>
-									<li {{ (Request::is('user/specialty') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/specialty') }}}">SPECIALTY</a></li>
-									<li {{ (Request::is('user/competition') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/competition') }}}">COMPETITION</a></li>
+									<li {{ (Request::is('user/company') ? ' class="active-white"' : '') }}><a href="{{{ URL::to('user/company') }}}">COMPANY</a></li>
+									<li {{ (Request::is('user/physician') ? ' class="active-white"' : '') }}><a href="{{{ URL::to('user/physician') }}}">PHYSICIAN</a></li>
+									<li {{ (Request::is('user/specialty') ? ' class="active-white"' : '') }}><a href="{{{ URL::to('user/specialty') }}}">SPECIALTY</a></li>
+									<li {{ (Request::is('user/competition') ? ' class="active-white"' : '') }}><a href="{{{ URL::to('user/competition') }}}">COMPETITION</a></li>
 								</ul>
 							</li>
-							<li {{ (Request::is('user/faq') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/faq') }}}">FAQ</a></li>
-							<li {{ (Request::is('contact') ? ' class="active"' : '') }}><a href="{{{ URL::to('contact') }}}">CONTACT US</a></li>
+							<li {{ (Request::is('user/faq') ? ' class="active-white"' : '') }}><a href="{{{ URL::to('user/faq') }}}">FAQ</a></li>
+							<li {{ (Request::is('contact') ? ' class="active-white"' : '') }}><a href="{{{ URL::to('contact') }}}">CONTACT US</a></li>
 
 					</ul>
 							
@@ -157,14 +160,14 @@
 					</ul>
                     @else
 					<ul class="nav navbar-nav navbar-center margin-nav-ul-left head-navbar-right  nav-top-mrg-sz text-center" style="text-align: center;">
-						<li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">HOME</a></li>
-						<li {{ (Request::is('user/faq') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/faq') }}}">FAQ</a></li>
-						<li {{ (Request::is('contact') ? ' class="active"' : '') }}><a href="{{{ URL::to('contact') }}}">CONTACT US</a></li>
+						<li {{ (Request::is('/') ? ' class="active-white"' : '') }}><a href="{{{ URL::to('') }}}">HOME</a></li>
+						<li {{ (Request::is('user/faq') ? ' class="active-white"' : '') }}><a href="{{{ URL::to('user/faq') }}}">FAQ</a></li>
+						<li {{ (Request::is('contact') ? ' class="active-white"' : '') }}><a href="{{{ URL::to('contact') }}}">CONTACT US</a></li>
 					</ul>
 							
 					<ul class ="nav navbar-nav navbar-right margin-nav-uls-left head-navbar-right nav-sign-ss  nav-top-mrg-sz">
-						<li {{ (Request::is('user/create') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">REQUEST AN ACCOUNT</a></li>
-						<li class="ss" {{ (Request::is('user/login') ? ' class="active"' : '') }}><a class="sign-up-back text-center" style="color: #FFF; padding: 0px !important;   width: 75px;" href="{{{ URL::to('user/login') }}}"><span class="glyphicon glyphicon-lock"></span> LOG IN</a></li>
+						<li {{ (Request::is('user/create') ? ' class="active-white"' : '') }}><a href="{{{ URL::to('user/create') }}}">REQUEST AN ACCOUNT</a></li>
+						<li class="ss" {{ (Request::is('user/login') ? ' class="active-white"' : '') }}><a class="sign-up-back text-center" style="color: #FFF; padding: 0px !important;   width: 75px;" href="{{{ URL::to('user/login') }}}"><span class="glyphicon glyphicon-lock"></span> LOG IN</a></li>
                     </ul>
 					@endif
 					<!-- ./ nav-collapse -->

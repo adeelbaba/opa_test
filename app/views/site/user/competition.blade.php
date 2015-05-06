@@ -109,6 +109,18 @@
 		   
 		</script>
 
+		
+<div class="sub-header">
+			<div class="container">
+				<div class="row">
+				
+					<div class="col-md-12 heading">
+						<p><b>SPEND ANALYTICS &gt; </b><span class="cnt-btm" style="font-size: 14px;"> COMPETITOR ANALYSIS</span></p>
+					</div>
+				</div>
+			</div>
+</div>	
+		
     <div class="container">
 
 	<br>
@@ -129,4 +141,6 @@
         <hr>
 
     </div>
+	@include('rating')
+	@include('feedback')
 @stop

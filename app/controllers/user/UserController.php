@@ -399,7 +399,7 @@ class UserController extends BaseController {
 				return Response::json($results);
 		}
 		else{
-			$results = DB::table('company')->select('name')->where('name', 'LIKE', '%' . $compquery . '%')->distinct('name')->orderBy('name')->take(100)->remember(60)->get();
+			$results = DB::table('compquery')->select('name')->where('name', 'LIKE', '%' . $compquery . '%')->orderBy('name')->take(100)->remember(60)->get();
 			$count = 0;
 			if ($results)
 			{
@@ -461,7 +461,7 @@ class UserController extends BaseController {
 			
 			$phyquery = str_replace(" ", "%", $phyquery);
 			
-			$results = DB::table('physician')->select('Full_Name')->where('Full_Name', 'LIKE', '%' . $phyquery . '%')->distinct('Full_Name')->orderBy('Full_Name')->take(100)->remember(60)->get();
+			$results = DB::table('phyquery')->select('Full_Name')->where('Full_Name', 'LIKE', '%' . $phyquery . '%')->orderBy('Full_Name')->take(100)->remember(60)->get();
 			$count = 0;
 			
 			if ($results)
