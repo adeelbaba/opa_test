@@ -42,9 +42,10 @@ class UserAccountValidator implements UserValidatorInterface
      *
      * @return boolean True if the $user is valid.
      */
-    public function validate(ConfideUserInterface $user, $ruleset = 'create')
+    public function validate(ConfideUserInterface $user /*, $ruleset = 'create'*/)
     {
         Log::info(">>> Testing Validator!!!");
+        $ruleset='create';
         // Set the $repo as a ConfideRepository object
         $this->repo = App::make('confide.repository');
 
