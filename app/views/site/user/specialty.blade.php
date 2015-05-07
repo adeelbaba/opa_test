@@ -282,40 +282,7 @@
 				document.getElementById("webPlayer").style.height = (getWindowInnerHeight() - 60) + "px";
 			}
 			
-			function help() {
-				//$('#myModal').modal();
-				$('body').chardinJs('start');
-			  console.log("In the function, bitches!");
-			}
-			
 		</script>
-	
-	<div class="modal fade" id="myModal" style="display: none;height: 100%;margin: auto;">
-		  <div class="modal-dialog" style="width: 650px; margin: auto;">
-			<div class="modal-content">
-			  <div class="modal-header" style="background-color: #55ccff;border-top-left-radius:5px;border-top-right-radius:5px;">
-				<button style="background-color: white;opacity:1;color: #55ccff;border-radius:50px;width:20px;height:20px;" type="button" class="btn btn-default close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="position: absolute; margin-top: -12px; margin-left: -6px;">&times;</span></button>
-				<h4 class="modal-title" style="color: white">Howdy!</h4>
-			  </div>
-			  <div class="modal-body">
-				<p><b>Filter and Search</b></p><br>
-					<ol>
-						<li>	Type in your search query in the text / search box</li>
-						<li>	A list of Specialties matching your query would appear</li>
-						<li>	Select the desired Specialty from the list</li>
-						<li>	Press Enter or click on the Search button</li>
-					</ol>
-					<div class="text-center">
-						<img src="{{asset('assets/img/searchspec.png')}}">
-					</div><br>
-					<p><b>Trivia</b></p><br>
-					<p>Specialty Dashboard use Identified General & Research payments data as published on December 19, 2014.</p><br>
-					<p><b>Did you know</b> that you could also filter according to Month or Year.</p><br>
-					<p><b>Did you know</b> that you could also filter the number of top physicians or top companies shown.</p>
-			  </div>
-			</div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
 	
 <div class="sub-header">
 			<div class="container">
@@ -340,7 +307,7 @@
 								<span class="glyphicon glyphicon-search span-search" aria-hidden="true"></span>
 								<input type="search" class="typeahead custom-input-padding" placeholder="Search Specialty" id="keyword" onselect="setSpecialty();" data-intro="<b>Filter and Search</b><br><ol><li>	Type in your search query in the text / search box</li><li>	A list of Specialties matching your query would appear</li><li>	Select the desired Specialty from the list</li><li>	Press Enter or click on the Search button</li></ol>" data-position="left">
 								<button class="btn go-btn" id="go" onclick="setSpecialty()" disabled="true">SEARCH</button>
-								<button class="btn go-btn" id="help" onclick="help()" type="button" data-toggle="chardinjs" data-intro="This button toggles the overlay, you can click it, even when the overlay is visible" data-position="right">HELP?</button>
+								<button class="btn go-btn" id="help" onclick="help()" type="button" data-toggle="chardinjs">HELP?</button>
 							</div>
 						</div>
 					</div>
@@ -359,8 +326,9 @@
 					</div>
 			</div>
 
-			<div id ="webPlayer" class="col-md-12 col-xs-12" style = "padding: 0px;" data-intro="You could filter data according to <b>Month or Year</b>. You could also filter the <b>number of top physicians or top companies shown</b>." data-position="left" data-position="right"></div>
-
+			<div data-intro="Specialty Dashboards use Identified General & Research payments data as published on December 19, 2014." data-position="top">
+				<div id ="webPlayer" class="col-md-12 col-xs-12" style = "padding: 0px;" data-intro="You could filter data according to <b>Month or Year</b>. You could also filter the <b>number of top physicians or top companies shown</b>." data-position="left"></div>
+			</div>
         </div>
         <!-- /.row -->	
 @include('feedback') 

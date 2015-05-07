@@ -289,40 +289,8 @@
 				// Resize all html elements properly.
 				document.getElementById("webPlayer").style.height = (getWindowInnerHeight() - 60) + "px";
 			}
-			
-			function help() {
-				$('#myModal').modal();
-			}
-			
+
 		</script>
-	
-		<div class="modal fade" id="myModal" style="display: none;height: 100%;margin: auto;">
-		  <div class="modal-dialog" style="width: 650px; margin: auto;">
-			<div class="modal-content">
-			  <div class="modal-header" style="background-color: #55ccff;border-top-left-radius:5px;border-top-right-radius:5px;">
-				<button style="background-color: white;opacity:1;color: #55ccff;border-radius:50px;width:20px;height:20px;" type="button" class="btn btn-default close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="position: absolute; margin-top: -12px; margin-left: -6px;">&times;</span></button>
-				<h4 class="modal-title" style="color: white">Help?</h4>
-			  </div>
-			  <div class="modal-body">
-					<p><b>Filter and Search</b></p><br>
-					<ol>
-						<li>	Type in your search query in the text / search box</li>
-						<li>	A list of Company Names matching your query would appear</li>
-						<li>	Select your desired company from the list</li>
-						<li>	Press Enter or click on the Search button</li>
-					</ol>
-					<div class="text-center">
-						<img src="{{asset('assets/img/searchcomp.png')}}">
-					</div><br>
-					<p><b>Trivia</b></p><br>
-					<p>Company Dashboards use Identified General & Research payments data as published on December 19, 2014.</p><br>
-					<p><b>Did you know</b> that you can click on any pie on the Physician Spend and the rest of the visualizations will update accordingly.</p><br>
-					<p><b>Did you know</b> that you could also filter the number of top physicians shown.</p>
-				</div>
-			</div>
-			</div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
 
 <div class="sub-header">
 			<div class="container">
@@ -344,9 +312,9 @@
 					<div class="col-md-12 heading">
 						<div id = "results" class="col-md-12 col-xs-12 results">
 							<span class="glyphicon glyphicon-search span-search" aria-hidden="true"></span>
-							<input type="search" class="typeahead custom-input-padding" placeholder="Search Company" id="keyword" onselect="setCompany();">
+							<input type="search" class="typeahead custom-input-padding" placeholder="Search Company" id="keyword" onselect="setCompany();" data-intro="<b>Filter and Search</b><br><ol><li>	Type in your search query in the text / search box</li><li>	A list of Companies matching your query would appear</li><li>	Select the desired Company from the list</li><li>	Press Enter or click on the Search button</li></ol>" data-position="left">
 							<button class="btn go-btn" id="go" onclick="setCompany()"  disabled="true">SEARCH</button>
-							<button class="btn go-btn" id="help" type="button" onclick="help()">HELP?</button>
+							<button class="btn go-btn" id="help" type="button" onclick="help()" data-toggle="chardinjs">HELP?</button>
 						</div>
 					</div>
 				</div>
@@ -372,9 +340,9 @@
 					</div>
 					</div>
 		</div>
-		
-		<div id ="webPlayer" class="col-md-12 col-xs-12" style = "padding: 0px;"></div>
-		
+		<div data-intro="Company Dashboards use Identified General & Research payments data as published on December 19, 2014." data-position="top">
+			<div id ="webPlayer" class="col-md-12 col-xs-12" style = "padding: 0px;" data-intro="You could filter data according to <b>Month or Year</b>. You could also filter the <b>number of top physicians or top companies shown</b>." data-position="left"></div>
+		</div>
 		<hr>
 		<div class="col-md-6" style = "padding: 0px;">
 			<div class="row">

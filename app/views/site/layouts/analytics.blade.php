@@ -86,6 +86,10 @@
 		ga('create', 'UA-61200678-1', 'auto');
 		ga('send', 'pageview');
 		
+		function help() {
+				$('body').chardinJs('start');
+			}
+		
 		</script>
 		
 		@yield('scripts')
