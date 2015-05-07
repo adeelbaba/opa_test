@@ -12,6 +12,7 @@ use Zizaco\Confide\UserValidatorInterface;
 use Illuminate\Support\Facades\App as App;
 use Illuminate\Support\Facades\Lang as Lang;
 use Illuminate\Support\MessageBag;
+use Zizaco\Confide\ConfideUserInterface;
 
 class UserAccountValidator implements UserValidatorInterface
 {
